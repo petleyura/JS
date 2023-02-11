@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=`, initial-scale=1.0">
+	<title>Задача5</title>
+</head>
+
+<body>
+	<h3>
+		Задача5
+	</h3>
+	<p>Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.</p>
+
+	<script>
+		//1.Вводимо необхідні дані
+		let seconds = parseInt(prompt('Введіть кількість секунд від початку доби але не більше 86400 секунд', '36066 с'))
+		
+
+		//2.Знаходимо результат
+		let hours = parseInt(seconds / 3600)
+		console.log(hours);
+		let minutes = parseInt((seconds - hours * 3600) / 60)
+
+		//3.Виводимо результа
+		document.write(`
+	      З початку доби пройшло ${hours} годин(и) та ${minutes} хвилин.
+	      `)
+	</script>
+</body>
+
+</html>

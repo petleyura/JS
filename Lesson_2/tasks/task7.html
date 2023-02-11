@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=`, initial-scale=1.0">
+	<title>Задача6</title>
+</head>
+
+<body>
+
+		<h3>
+			Задача 6
+		</h3>
+		<p>З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та
+			загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</p>
+	<script>
+		//1.Вводимо необхідні дані
+		let priceOfGoods1 = parseFloat(prompt('Вартість першого товару', '25,3 грн'))
+		let goods1 = parseInt(prompt('Веедіть кількість першого товару', '3 шт'))
+		let priceOfGoods2 = parseFloat(prompt('Введіть вартість другого товару', '8,25 грн'))
+		let goods2 = parseInt(prompt('Введіть кількість другого товару', '10 шт'))
+		let priceOfGoods3 = parseFloat(prompt('Введіть вартість третього товару', '12,00 грн'))
+		let goods3 = parseInt(prompt('Введіть кількість третього товару ', '3 шт'))
+		
+		
+		
+
+		//2.Знаходимо результат
+		let summOfGoods1 = goods1 * priceOfGoods1
+		let summOfGoods2 = goods2 * priceOfGoods2
+		let summOfGoods3 = goods3 * priceOfGoods3
+		let summOfGoodsAll = summOfGoods1 + summOfGoods2 + summOfGoods3
+
+		//3.Виводимо результа
+		document.write(`
+	   <ol>
+			<li>Товар, ${goods1} к-сть, ${priceOfGoods1} ціна  за один. <br>
+				 Загальна сума ${summOfGoods1} </li>
+			<li>Товар, ${goods2} к-сть, ${priceOfGoods2} ціна  за один. <br>
+				 Загальна сума ${summOfGoods2} </li>
+			<li>Товар, ${goods3} к-сть, ${priceOfGoods3} ціна  за один. <br>
+				Загальна сума ${summOfGoods3} </li>
+			
+		</ol>
+		<p>Всього на сумму ${summOfGoodsAll}</p>
+	      `)
+	</script>
+</body>
+
+</html>
