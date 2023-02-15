@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=`, initial-scale=1.0">
+	<title>Задача6</title>
+</head>
+
+<body>
+	<h3>
+		Задача6
+	</h3>
+	<p>З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.</p>
+
+	<script>
+		//1.Вводимо необхідні дані
+		const deyNumber = parseInt(prompt('Введіть номер дня тижня від 1 до 7', '3'))
+		let result;
+
+		//2.Знаходимо результат
+		switch (deyNumber) {
+			case 1: result = "Понеділок"
+				break
+			case 2: result = "Вівторок"
+				break
+			case 3: result = "Середа"
+				break
+			case 4: result = "Четверг"
+				break
+			case 5: result = "П'ятниця"
+				break
+			case 6: result = "Субота"
+				break
+			case 7: result = "Неділя"
+				break
+			default: result = "Невірна кількість тижнів"
+		}
+		//3.Виводимо результа
+		alert(result)
+	</script>
+</body>
+
+</html>
