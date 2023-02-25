@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача15</title>
+  </head>
+
+  <body>
+    <h3>Задача 15.</h3>
+    <p>Вивести на екран N абзаців (N вводиться користувачем) за зразком:</p>
+    <script>
+      //1.Вводимо необхідні дані
+      const days = 365;
+      let temperatureAverage = 0;
+      let summTemperature = 0;
+      for (let i = 1; i <= days; i++) {
+        const temperature = parseFloat(prompt("Введіть температуру", 25));
+        if (!isFinite(temperature)) break;
+        summTemperature += temperature;
+        temperatureAverage = summTemperature / i;
+      }
+      document.write(
+        `Середня температура за введений період складає ` + temperatureAverage
+      );
+      //2.Знаходимо результат
+
+      //3.Виводимо результа
+    </script>
+  </body>
+</html>

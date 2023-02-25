@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача6</title>
+  </head>
+
+  <body>
+    <h3>Задача6</h3>
+    <p>З Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком</p>
+
+    <script>
+      //1.Вводимо необхідні дані
+      let cell = 1,
+        rows = 1,
+        table = 1;
+      //2.Знаходимо результат
+      for (; table <= 3; table++) {
+        document.write(`<table border="2">`);
+        rows = 1;
+        for (; rows <= 3; rows++) {
+          document.write(`<tr>`);
+          for (; cell <= 27; cell++) {
+            document.write(`<td>${cell}</td>`);
+            if (cell % 3 == 0) break;
+          }
+          cell++;
+          document.write(`</tr>`);
+        }
+        document.write(`</table>`);
+      }
+
+      //3.Виводимо результа
+    </script>
+  </body>
+</html>

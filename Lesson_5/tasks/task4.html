@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача3</title>
+  </head>
+
+  <body>
+    <h3>Задача 5</h3>
+    <p>Вивести таблицю</p>
+    <script>
+      let column = 1;
+      let rows = 1;
+      document.write(`<table border="2">`);
+      while (rows <= 3) {
+        document.write(`<tr>`);
+        column = 1;
+        while (column <= 7) {
+          document.write(`<td>${column}</td>`);
+          column++;
+        }
+        document.write(`</tr>`);
+        rows++;
+      }
+      document.write(`</table> `);
+    </script>
+  </body>
+</html>

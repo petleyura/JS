@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=`, initial-scale=1.0">
+	<title>Задача4</title>
+</head>
+
+<body>
+	<h3>Задача 5</h3>
+    <p>Вивести таблицю</p>
+    <script>
+      let stringTable = 1;
+      let cell = 1;
+      //1.Вводимо необхідні дані
+
+      document.write(`<table border="2">`);
+      for (; stringTable <= 3; stringTable++) {
+        document.write(`<tr>`);
+
+        for (; ; cell++) {
+          document.write(`<td>${cell}</td>`);
+          if (cell % 3 == 0) break;
+        }
+        document.write(`</tr>`);
+        cell++;
+      }
+      document.write(`</table> `);
+
+	</script>
+</body>
+
+</html>

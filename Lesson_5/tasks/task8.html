@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача8</title>
+  </head>
+
+  <body>
+    <h3>Задача8</h3>
+    <p>
+      Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число
+      користувача (використати confirm).
+    </p>
+    <script>
+      //1.Вводимо необхідні дані
+      const attempts = 3;
+      let num;
+      for (let i = 0; i < attempts; i++) {
+        const randomNum = Math.floor(Math.random() * 10);
+        num = confirm("Ви загадали " + randomNum);
+        if (num === true) break;
+      }
+    </script>
+  </body>
+</html>

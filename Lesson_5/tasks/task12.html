@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача12</title>
+  </head>
+
+  <body>
+    <h3>Задача 12</h3>
+    <p>
+      Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у
+      кожній позиції вибирається як одне з чотирьох зображень. Вивести ці
+      зображення і повідомити виграш користувача (три перших зображення 100 грн,
+      три других – 200, три третіх – 500, три четвертих зображення – 1000грн).
+      Використати цикли і switch (для вибору зображення за номером).
+    </p>
+
+    <script>
+      let result = "";
+      let imeges = "";
+      let win;
+      for (let i = 0; i < 3; i++) {
+        const numOfRundomFruit = 1 + Math.floor(Math.random() * 4);
+        switch (numOfRundomFruit) {
+          case 1:
+            result += "Lemon";
+            imeges += `<img src="../img/avtomat/1.jpg" alt="" />`;
+            break;
+          case 2:
+            result += "Cherry";
+            imeges += `<img src="../img/avtomat/2.png" alt="" />`;
+            break;
+          case 3:
+            result += "Banana";
+            imeges += `<img src="../img/avtomat/3.jpg" alt="" />`;
+            break;
+          case 4:
+            result += "Pineapple";
+            imeges += `<img src="../img/avtomat/4.jpg" alt="" />`;
+            break;
+        }
+      }
+      document.write(`${imeges}`);
+      switch (result) {
+        case "LemonLemonLemon":
+          win = `<p>Ваш вийграш складає 100грн</p>`;
+          break;
+        case "CherryCherryCherry":
+          win = `<p>Ваш вийграш складає 200грн</p>`;
+          break;
+        case "BananaBananaBanana":
+          win = `<p>Ваш вийграш складає 500грн</p>`;
+          break;
+        case "PineapplePineapplePineapple":
+          win = `<p>Ваш вийграш складає 1000грн</p>`;
+          break;
+        default:
+          win = `<p>Ви нічого не виграли</p>`;
+          break;
+      }
+      document.write(`${win}`);
+    </script>
+    <style>
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //0. Вивести до якої категорії відноситься людина
+      //   const CHILD = 6,
+      //     STUDENT = 17,
+      //     WORKER = 23,
+      //     RETIRED = 65
+
+      //   const userAge = parseInt(prompt('Вік користувача', '0'))
+
+      //   let userStatus, userPresent
+      //   if (userAge <= CHILD) userStatus = 'Дитина'
+      //   else {
+      //     if (userAge < STUDENT) userStatus = 'Школяр'
+      //     else if (userAge < WORKER) userStatus = 'Студент'
+      //     else if (userAge < RETIRED) userStatus = 'Worker'
+      //     else userStatus = 'Пернсіонер'
+      //   }
+      //   document.write(userStatus)
+      //=======================
+      // Задача. З клавіатури вводиться номер місця, яке зайняв спортсмен. Вивести, яку ногороду він отримає
+      //   const placeNumber = parseInt(prompt('Place'))
+      //Варіант 1 -  з використанням if
+      //   let prize
+      //   //   if (placeNumber === 1) prize = 'Gold'
+      //   //   else if (placeNumber === 2) prize = 'Silver'
+      //   //   else if (placeNumber === 3) prize = 'Bronz'
+      //   //   else prize = 'Sertificate'
+
+      //Варіант 1 -  з використанням switch
+      //   switch (placeNumber) {
+      //     case 1:
+      //       prize = 'Gold'
+      //       break
+      //     case 2:
+      //       prize = 'Silver'
+      //       break
+      //     case 3:
+      //       prize = 'Bronz'
+      //       break
+      //     default:
+      //       prize = 'Sertificate'
+      //   }
+
+      //   document.write(prize)
+
+      //=======================
+      // Задача. З клавіарути вводиться номер дня. Вивести на екран чи це робочий, чи віхідний день.
+      //   const dayNumber = parseInt(prompt('Day number'))
+
+      //   let result
+      //   switch (dayNumber) {
+      //     case 1:
+      //     case 2:
+      //     case 3:
+      //     case 4:
+      //     case 5:
+      //       result = 'Working day'
+      //       break
+      //     case 6:
+      //     case 7:
+      //       result = 'Day off'
+      //       break
+      //     default:
+      //       result = 'Error. Incorrect day number'
+      //       break
+      //   }
+      //   document.write(result)
+      //=======================
+      //Задача. З клавіатури вводиться колір помідора. Вивести на екран стан помідора (можна їсти, дозріває, ще росте)
+      //   const tomatoColor = prompt('Tomato color')
+
+      //   let result
+      //   switch (tomatoColor) {
+      //     case 'red':
+      //       result = 'Можна їсти'
+      //       break
+      //     case 'yellow':
+      //       result = 'Дозріває'
+      //       break
+      //     case 'green':
+      //       result = 'Ще росте'
+      //       break
+      //     default:
+      //       result = 'Помідор мутант'
+      //       break
+      //   }
+      //   document.write(result)
+      //=======================
+      // 1.	Знайти найбільше серед 2 чисел.
+      //   const num1 = parseInt(prompt('Num1'))
+      //   const num2 = parseInt(prompt('Num2'))
+
+      //   let max
+      //   //0)
+      //   max = num1
+      //   if (num2 > max) max = num2
+      //   //1)
+      //   if (num1 > num2) max = num1
+      //   else max = num2
+      //   //2)
+      //   max = num1 > num2 ? num1 : num2
+      //   //3)
+      //   max = Math.max(num1, num2)
+
+      //   document.write(max)
+      //================================================================
+      // 2.	Знайти найменше серед 2.
+   /*      const num1 = parseInt(prompt('Num1'))
+        const num2 = parseInt(prompt('Num2'))
+
+       let max
+      //   //0)
+         min = num1
+        if (num2 < min) min = num2
+      //   //1)
+      //   if (num1 > num2) min = num1
+      //   else min = num2
+      //   //2)
+      //   min = num1 > num2 ? num1 : num2
+      //   //3)
+      //   min = Math.max(num1, num2)
+ */
+       /* document.write(min) */
+      //================================================================
+    /*   // 3.	Найбільше замінити на 0, якщо одинакові то обидва на 0.
+       let num3 = parseInt(prompt('Num3'))
+       let num4 = parseInt(prompt('Num4'))
+        
+         if (num3 < num4) 
+           num4 = 0;
+           else if ( num3 > num4)
+           num3 = 0;
+           else {num3 = 0,num4 = 0}; 
+
+           num4 = num3 < num4 ? 0 : num3 > num4 ? (num3 = 0, num4 = num4) : (num3 = 0,  num4 = 0 ) 
+            document.write(`num3 = ${num3}, num4 = ${num4}`) */
+      //================================================================
+      // 4.	Значення які більші за середнє замінити на 0.
+  /* let num1 = parseInt(prompt('Num1'))
+  let num2 = parseInt(prompt('Num2'))
+  let num3 = parseInt(prompt('Num3'))
+  let summ = (num1 + num2 +num3) / 3
+        if (num1 > summ) num1 = 0
+        if (num2 > summ) num2 = 0
+        if (num3 > summ) num3 = 0
+        
+  document.write(`num1 = ${num1}, num2 = ${num2}, num3 = ${num3},`) */
+      //================================================================
+      // 5.	Знайти найбільше серед 3.
+      //   const num1 = parseInt(prompt('Num1'))
+      //   const num2 = parseInt(prompt('Num2'))
+      //   const num3 = parseInt(prompt('Num3'))
+
+      //   let max
+      //   //0)
+      //   max = num1
+      //   if (num2 > max) max = num2
+      //   if (num3 > max) max = num3
+
+      //   //1)
+      //   if (num1 > num2) {
+      //     if (num1 > num3) max = num1
+      //     else max = num3
+      //   } else {
+      //     if (num2 > num3) max = num2
+      //     else max = num3
+      //   }
+
+      //   //2)
+      //   //max = (num1 > num2 && num1>num3) ? num1 : ((num2>num3)?num2:num3)
+      //   //3)
+      //   max = Math.max(num1, num2, num3)
+
+      //   document.write(max)
+      //================================================================
+      // 6.	Знайти найбільше серед 4.
+
+/* 
+          let num1 = parseInt(prompt('Num1'))
+          let num2 = parseInt(prompt('Num2'))
+          let num3 = parseInt(prompt('Num3'))
+          let num4 = parseInt(prompt('Num4'))
+          let max = num1
+          if(max< num2) max = num2
+          if(max< num3) max = num3
+          if(max< num4) max = num4
+          
+  
+          
+        document.write(`num1 = ${num1}, num2 = ${num2}, num3 = ${num3}, num4 = ${num4}, <br>`) 
+        document.write(max)
+         */
+      //================================================================
+      // // 7.	Найбільше серед 3 замінити на 0.
+      // let num1 = parseInt(prompt('Num1'))
+      // let num2 = parseInt(prompt('Num2'))
+      // let num3 = parseInt(prompt('Num3'))
+
+      // let max
+
+      // //0)-------- 1-ший варіант розв"язку ------------------------
+
+      // //1 Етап - знайдемо максимальне
+      // max = num1
+      // if (num2 > max) max = num2
+      // if (num3 > max) max = num3
+
+      // //2 Етап - максимальне заміняємо на 0
+      // if (num1 === max) num1 = 0
+      // if (num2 === max) num2 = 0
+      // if (num3 === max) num3 = 0
+
+      // //1)-------- 2-ший варіант розв"язку ------------------------
+      // if (num1 > num2 && num1 > num3) {
+      //   num1 = 0
+      // } else if (num2 > num3) num2 = 0
+      // else num3 = 0
+
+      // document.write(`num1 = ${num1}, num2 = ${num2}, num3 = ${num3}`)
+      //================================================================
+      // 8.	Дано 3 числа. Знайти найбільше серед від’ємних.
+      // -5, -4, 2
+
+      //   let num1 = parseInt(prompt('Num1'))
+      //   let num2 = parseInt(prompt('Num2'))
+      //   let num3 = parseInt(prompt('Num3'))
+
+      //   let max = -Infinity
+      //   if (num1 < 0 && num1 > max) max = num1
+      //   if (num2 < 0 && num2 > max) max = num2
+      //   if (num3 < 0 && num3 > max) max = num3
+
+      //   document.write(max)
+
+      //================================================================
+      // 9.	Знайти найменше серед додатних.
+      //   let num1 = parseInt(prompt('Num1'))
+      //   let num2 = parseInt(prompt('Num2'))
+      //   let num3 = parseInt(prompt('Num3'))
+
+      //   let min = Infinity
+      //   if(num1>0 && num1<min) min = num1
+      //   if(num2>0 && num2<min) min = num2
+      //   if(num3>0 && num3<min) min = num3
+
+      //   document.write(min)
+      //================================================================
+      // 10.	Знайти найбільше парне число.  (число %2 === 0)
+      //   let num1 = parseInt(prompt('Num1'))
+      //   let num2 = parseInt(prompt('Num2'))
+      //   let num3 = parseInt(prompt('Num3'))
+
+      //   let max = -Infinity
+      //   if (  (num1 % 2 === 0)  && (num1 > max) ) max = num1
+      //   if (  (num2 % 2 === 0) && (num2 > max)) max = num2
+      //   if (num3 % 2 === 0 && num3 > max) max = num3
+
+      //   document.write(max)
+
+      //================================================================
+      // 11.	Знайти найбільше серед тих які менші за середні арифметичне.
+      /*  
+      let num1 = parseInt(prompt('Num1'))
+          let num2 = parseInt(prompt('Num2'))
+          let num3 = parseInt(prompt('Num3'))
+          let summ = (num1 + num2 + num3) / 3
+          if (num1 < summ) num1 = 0
+          if (num2 < summ) num2 = 0
+          if (num3 < summ) num3 = 0
+
+          document.write(`num1 = ${num1}, num2 = ${num2}, num3 = ${num3},`)
+ */
+      //   //================================================================
+      // 12.	Знайти 2 найбільших числа з 4 цілих чисел.
+
+       /*   let num1 = parseInt(prompt('Num1'))
+          let num2 = parseInt(prompt('Num2'))
+          let num3 = parseInt(prompt('Num3'))
+          let num4 = parseInt(prompt('Num4'))
+        let maxNum 
+        let minNum
+       
+
+       if (num1 < num2) 
+       {maxNum = num2
+        minNum = num1
+       } else {
+        maxNum = num1
+        minNum = num2
+      }
+
+      if(num3 > maxNum) {
+        minNum2 = maxNum
+        maxNum = num3
+      } else if (num3>minNum)
+        minNum = num3
+      if (num4 > maxNum) {
+          minNum2 = maxNum
+          maxNum = num4
+        } else if (num4 > minNum)
+          minNum = num4
+
+     
+
+        
+      document.write(`num1 = ${num1}, num2 = ${num2}, num3 = ${num3}, num4 = ${num4}, <br>
+        maxNum= ${maxNum} <br>
+        minNum = ${minNum} `)  */
+        
+
+
+
+      //   //================================================================
+     /*  // 13.	Знайти 2 найменших числа.
+        let a = parseInt(prompt('a'))
+        let b = parseInt(prompt('b'))
+        let c = parseInt(prompt('c'))
+        let d = parseInt(prompt('d'))
+        let min1
+        let min2
+
+        if (a<b) {
+          min1 = a
+          min2 = b
+        } else {
+          min1 = b
+          min2 = c
+        }
+        if (min1 > c) {
+          min2 = min1
+          min1 = c
+        } else if (min2 > c) {
+          min2 = c
+        }
+         if (min1 > d) {
+            min2 = min1
+            min1 = d
+          } else if (min2 > d) {
+            min2 = d
+          }
+
+             
+              document.write(`a = ${a}, b = ${b}, c = ${c}, d = ${d}, <br>
+        min1= ${min1} <br>
+        min2= ${min2} `) 
+         */
+
+    </script>
+  </body>
+</html>
