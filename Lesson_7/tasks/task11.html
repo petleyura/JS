@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача11</title>
+  </head>
+
+  <body>
+    <h3>Задача11</h3>
+    <p>
+       Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
+    </p>
+
+    <script>
+     const minTemp = -35,
+        maxTemp = 40;
+      function getSummTemAverage(minT, maxT, tempReadings) {
+        let getSummMinesTemp = 0;
+        document.write(`Температуру заміряли ${tempReadings} разів <br> <ol>`);
+        for (let i = 0; i < tempReadings; i++) {
+          const temp = minT + Math.floor(Math.random() * (maxT - minT + 1));
+          document.write(`<li>t&deg; = ${temp}&deg; C</li> `);
+          getSummMinesTemp+=temp;
+        }
+        document.write(`</ol> `);
+        return getSummMinesTemp/tempReadings;
+      }
+      let temperaturReadings = parseInt(
+        prompt(`Введіть скільки разів заміряли температуру`, 5)
+      );
+      document.write(
+        `Було проведено ${temperaturReadings} замірів показання температу, за весь час середня температура складє ${getSummTemAverage(
+          minTemp,
+          maxTemp,
+          temperaturReadings
+        )}&deg; C`
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=`, initial-scale=1.0">
+	<title>Задача4</title>
+</head>
+
+<body>
+	<h3>Задача 5</h3>
+    <p>Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.</p>
+    <script>
+     const num1 = parseFloat(prompt('Число №1', -10))
+		const num2 = parseFloat(prompt('Число №2', 5))
+		const num3 = parseFloat(prompt('Число №3', 150))
+
+		function numPaired(a, b, c) {
+			let resultNumPaured = 0
+			if (a % 2 === 0) resultNumPaured++
+			if (b % 2 === 0) resultNumPaured++
+			if (c % 2 === 0) resultNumPaured++
+			return resultNumPaured
+		}
+		function numPositive(a, b, c) {
+			let resultNumPositive = 0
+			if (a > 0) resultNumPositive++
+			if (b > 0) resultNumPositive++
+			if (c > 0) resultNumPositive++
+			return resultNumPositive
+		}
+		function numGreater100(a, b, c) {
+			let resultnumGreater100 = 0
+			if (a > 100) resultnumGreater100++
+			if (b > 100) resultnumGreater100++
+			if (c > 100) resultnumGreater100++
+			return resultnumGreater100
+		}
+
+		document.write(`<p>число  №1 = ${num1}, число  №2 = ${num2}, число  №3 = ${num3}</p>`)
+		document.write(`<p>кількість парних  = ${numPaired(num1, num2, num3)}</p>`)
+		document.write(`<p>кількість додатних =  ${numPositive(num1, num2, num3)}</p>`)
+		document.write(`<p>кількість більших за 100 =  ${numGreater100(num1, num2, num3)}</p>`)
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача14</title>
+  </head>
+
+  <body>
+    <h3>Задача14</h3>
+    <p>
+      Користувачу повідомляють суму, яку йому треба сплатити. Користувач
+      поступово вводить суму грошей до тих пір, поки суми не буде достатньо для
+      оплати товарів (кожного разу користувачу повідомляють, яку ще суму
+      потрібно ввести).
+    </p>
+
+    <script>
+      //1.Вводимо необхідні дані
+      const money = 1 + Math.floor(Math.random() * 1000);
+      alert("Внесіть будбласка " + money + "грн");
+      let restMoney = money;
+      while (restMoney > 0) {
+        let userMoney = parseFloat(prompt("Внесіть суму", 30));
+        restMoney -= userMoney;
+        if (restMoney == 0) alert("Ви внесли " + userMoney + "грн.");
+        else if (restMoney < 0) {
+          restMoney *= -1;
+          alert(
+            "Ви внесли " + userMoney + "грн. Отримайте вашу здачу " + restMoney
+          );
+          break
+        }
+        alert("Ви внесли " + userMoney + "грн. залишилося " + restMoney);
+      }
+      document.write("Ви внесли всі кошти");
+      //3.Виводимо результа
+    </script>
+  </body>
+</html>

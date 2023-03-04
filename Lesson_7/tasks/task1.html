@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=`, initial-scale=1.0">
+	<title>Задача0</title>
+</head>
+
+<body>
+	<h3>
+		 Задача 0.
+	</h3>
+
+	<p>Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</p>
+    
+
+	<script>
+		
+	function timeOfYear (Num) {
+			switch (Num) {
+				case 12:
+				case 1:
+				case 2: return "Зима"
+				case 3:
+				case 4:
+				case 5: return "Весна"
+				case 6:
+				case 7:
+				case 8: return "Літо"
+				case 9:
+				case 10:
+				case 11: return "Осінь"				
+				default: return "Error"	
+			}
+		}
+		let monthNum = parseInt(prompt(`Введіть номер місяця`, 2))
+		document.write(`${monthNum} - ${timeOfYear(monthNum) }`)
+
+	</script>
+		
+
+	
+</body>
+
+</html>

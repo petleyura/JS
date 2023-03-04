@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача10</title>
+  </head>
+  <body>
+    <h3>Задача10</h3>
+    <p>
+      Дано покази температур (довільна кількість). Розробити функцію, яка
+      дозволить підрахувати кількість від’ємних показів температури.
+    </p>
+
+    <script>
+      const minTemp = -35,
+        maxTemp = 40;
+      function getSummTem(minT, maxT, tempReadings) {
+        let getSummMinesTemp = 0;
+        document.write(`Температуру заміряли ${tempReadings} разів <br> <ol>`);
+        for (let i = 0; i < tempReadings; i++) {
+          const temp = minT + Math.floor(Math.random() * (maxT - minT + 1));
+          document.write(`<li>t&deg; = ${temp}&deg; C</li> `);
+          if (temp < 0) getSummMinesTemp++;
+        }
+        document.write(`</ol> `);
+        return getSummMinesTemp;
+      }
+      let temperaturReadings = parseInt(
+        prompt(`Введіть скільки разів заміряли температуру`, 5)
+      );
+      document.write(
+        `Було проведено ${temperaturReadings} замірів показання температу, з них ${getSummTem(
+          minTemp,
+          maxTemp,
+          temperaturReadings
+        )} нижче 0&deg;`
+      );
+    </script>
+  </body>
+</html>

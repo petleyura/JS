@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>13. Морський бій.</title>
+  </head>
+
+  <body>
+    <h3>13. Морський бій.</h3>
+    <p>
+      Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M.
+      Маючи К снарядів користувач намагається потопити корабель.
+    </p>
+    <script>
+      const numFieldsN = parseInt(
+        prompt("Ведіть кількість горизонтальних полів", "5")
+      );
+      const numFieldsM = parseInt(
+        prompt("Ведіть кількість вертикальних полів", "5")
+      );
+      let shells = Math.floor((numFieldsM + numFieldsN) / 2);
+      alert("У вас " + shells + " снарядів. Поченаємо гру");
+      const randomShipCellN = 1 + Math.floor(Math.random() * numFieldsN);
+      console.log(randomShipCellN);
+      const randomShipCellM = 1 + Math.floor(Math.random() * numFieldsM);
+      console.log(randomShipCellM);
+      let userNumFieldsN, userNumFieldsM;
+      for (; shells !== 0; ) {
+        userNumFieldsN = parseInt(
+          prompt(
+            "Зробіть  постріл по горизонталі, але не більше " + numFieldsN,
+            "1"
+          )
+        );
+        userNumFieldsM = parseInt(
+          prompt(
+            "Зробіть постріл  по вертикалі, але не більше " + numFieldsM,
+            "3"
+          )
+        );
+        if (userNumFieldsM <= numFieldsM && userNumFieldsN <= numFieldsN) {
+          if (
+            userNumFieldsM === randomShipCellM &&
+            userNumFieldsN === randomShipCellN
+          ) {
+            document.write("Корабиль збитий");
+            break;
+          } else if (
+            userNumFieldsM == randomShipCellM - 1 ||
+            userNumFieldsM == randomShipCellM + 1 ||
+            userNumFieldsN == randomShipCellN - 1 ||
+            userNumFieldsN == randomShipCellN + 1
+          ) {
+            alert("Поряд біля корабля");
+            shells--;
+            alert("У вас залишилося " + shells + " снарядів. Наступний хід");
+            
+          } else {
+            alert("Ви не попали");
+            shells--;
+            alert("У вас залишилося " + shells + " снарядів. Наступний хід");
+            
+          }
+        } else {
+          alert("Постріл здійснений за межі поля");
+          shells--;
+          alert("У вас залишилося " + shells + " снарядів.");
+        }
+        if (shells == 0) document.write("У Вас скінчилися набої");
+      }
+    </script>
+  </body>
+</html>

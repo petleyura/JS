@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача3</title>
+  </head>
+
+  <body>
+    <h3>Задача 4</h3>
+    <p>Створити окремі функції, які для 4 чисел знаходять:
+		<ul>
+		  <li>суму;</li>
+  		<li>добуток;</li>
+  		<li>середнє арифметичне;</li>
+  	<li>	мінімальне значення.</li>
+		</ul>
+</p>
+    <script>
+     let num1 = parseFloat(prompt('Число №1'))
+		let num2 = parseFloat(prompt('Число №2'))
+		let num3 = parseFloat(prompt('Число №3'))
+		let num4 = parseFloat(prompt('Число №4'))
+
+		function summ(a, b, c, d) {
+			return a + b + c + d
+		}
+		function addNum(a, b, c, d) {
+			return a * b * c * d
+		}
+		function midleNum(a, b, c, d) {
+			return (a + b + c + d) / 4
+		}
+		function minNum(a, b, c, d) {
+			let min;
+			if (a > b) min = b
+			else min = a
+			if (min > c) min = c
+			if (min > d) min = d
+			return min
+		}
+		document.write(`<p>число  №1 = ${num1}, число  №2 = ${num2}, число  №3 = ${num3}, число  №4 = ${num4}</p>`)
+		document.write(`<p>Сума чисел  = ${summ(num1, num2, num3, num4)}</p>`)
+		document.write(`<p>Добуток чисел =  ${addNum(num1, num2, num3, num4)}</p>`)
+		document.write(`<p>Середнє арифметичне =  ${midleNum(num1, num2, num3, num4)}</p>`)
+		document.write(`<p>Мінімальне число серед 4-х =  ${minNum(num1, num2, num3, num4)}</p>`)
+    </script>
+  </body>
+</html>

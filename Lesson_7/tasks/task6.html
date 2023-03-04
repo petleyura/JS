@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача6</title>
+  </head>
+
+  <body>
+    <h3>Задача6</h3>
+    <p>Створити окремі функції, які переводять:
+		<ul>
+		   <li>Сантиметри у дюйми;</li>
+  		 <li>Кілограми у фунти;</li>
+  		 <li>Кілометри у милі.</li>
+		</ul>
+  </p>
+
+    <script>
+     let lenghtSentimetr = parseFloat(prompt('Введіть довжину в см', 30))
+		let weightKilograms = parseFloat(prompt('Введіть вагу в кг', 60))
+		let lenghtKilometr = parseFloat(prompt('Введіть відстань в км', 25))
+		function convertInches(sm) {
+			return (sm / 2.54).toFixed(2)
+		}
+		function convertPound(kg) {
+			return (kg / 0.45).toFixed(2)
+		}
+		function convertMile(km) {
+			return (km / 1.609).toFixed(3)
+		}
+		document.write(`<p>${lenghtSentimetr}см = ${convertInches(lenghtSentimetr)}дюймів</p>`)
+		document.write(`<p>${weightKilograms}кг = ${convertPound(weightKilograms)} фунтів</p>`)
+		document.write(`<p>${lenghtKilometr}км = ${convertMile(lenghtKilometr)}милі</p>`)
+    
+    </script>
+  </body>
+</html>
