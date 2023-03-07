@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача7</title>
+  </head>
+
+  <body>
+    <h3>Задача 7</h3>
+   <p>Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за: <ol>
+	<li>за весь рік;</li>
+	<li>у першій половині року;</li>
+	<li>у другій половині року;</li>
+	<li>за літо;</li>
+	<li>за ІІ квартал;</li>
+	<li>за парні місяці (з парними номерами);</li>
+	<li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li></ol>
+</p>
+    <script>
+		let numMoneyCommunalServices = []
+     for (let i = 0; i < 12; i++) {
+		const moneyComunOfMonth = parseFloat(prompt(`Введіть суму платіжки за поточний місяць`, 25,30))
+		numMoneyCommunalServices.push(moneyComunOfMonth)
+	  }
+
+	  function summMoneyOfYear(arr) {
+		let sumMoney = 0
+		for (let i = 0; i < arr.length; i++) {
+			sumMoney+=arr[i]			
+		}
+		return sumMoney
+	  }
+
+	  function summMoneyOfFirstHalfYear(arr) {
+		let sumMoney = 0
+		for (let i = 0; i < 6; i++) {
+			sumMoney+=arr[i]			
+		}
+		return sumMoney
+	  }
+
+	  function summMoneyOfLastHalfYear(sumYear, sumMonFirstYear) {		
+		return sumYear - sumMonFirstYear
+	  }
+
+	  function summMoneyOfSummer(arr) {
+		return arr[5]+arr[6]+arr[7]
+	  }
+
+	  function summMoneyOfSecondQuartal(arr) {
+		return arr[2]+arr[3]+arr[4]
+	  }
+
+	  function summMoneyOfPairedMonths(arr) {
+		let sumMoney = 0
+		for (let i = 1; i < arr.length; i++) {
+			if(i%2!==0)sumMoney+=arr[i]			
+		}
+		return sumMoney
+	  }
+
+	   function summMoneyOfFirstMonthsSeasons(arr) {
+		return arr[11]+arr[2]+arr[5]+arr[8]
+	  }
+
+	  document.write(`<p>Платіжки за рік : ${numMoneyCommunalServices}</p>`)
+	  document.write(`<p>за весь рік : ${summMoneyOfYear(numMoneyCommunalServices)}</p>`)
+	   document.write(`<p>у першій половині року : ${summMoneyOfFirstHalfYear(numMoneyCommunalServices)}</p>`)
+	   document.write(`<p>у другій половині року : ${summMoneyOfLastHalfYear( summMoneyOfYear(numMoneyCommunalServices), summMoneyOfFirstHalfYear(numMoneyCommunalServices))}</p>`)
+	   document.write(`<p>за літо : ${summMoneyOfSummer(numMoneyCommunalServices)}</p>`)
+	   document.write(`<p>за ІІ квартал : ${ summMoneyOfSecondQuartal(numMoneyCommunalServices)}</p>`)
+	    document.write(`<p>за парні місяці (з парними номерами): ${summMoneyOfPairedMonths(numMoneyCommunalServices)}</p>`)
+	   document.write(`<p>за місяці, які є початковими у сезоні (весна, літо, осінь, зима) : ${summMoneyOfFirstMonthsSeasons(numMoneyCommunalServices)}</p>`)
+
+    </script>
+  </body>
+</html>

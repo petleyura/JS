@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача3</title>
+  </head>
+
+  <body>
+    <h3>Задача3</h3>
+    <p>
+      Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+    </p>
+
+    <script>
+      const nameUser = [
+        "Іван",
+        "Оля",
+        "Євген",
+        "Іван",
+        "Іван",
+        "Юрій",
+        "Світлана",
+        "Іван",
+      ];
+      function getSumNameIvan(arr) {
+        let sumName = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === "Іван") sumName++;
+        }
+        return sumName;
+      }
+
+      document.write(
+        `Ім'я 'Іван' зустрічається ${getSumNameIvan(
+          nameUser
+        )} рази(ів), в масиві[${nameUser}] `
+      );
+    </script>
+  </body>
+</html>

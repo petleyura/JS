@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача6</title>
+  </head>
+
+  <body>
+    <h3>Задача6</h3>
+    <p>
+      Дано послідовність цін товарів та назв (у окремих масивах). Вивести на
+      екран ті, які може собі дозволити користувач (кількість грошей задається).
+    </p>
+
+    <script>
+      // Масив з назвами продуктів
+      var productsInStore = [
+        "Молоко",
+        "Хліб",
+        "Яйця",
+        "Масло",
+        "М'ясо",
+        "Ковбаса",
+        "Сир",
+        "Печиво",
+        "Фрукти",
+        "Овочі",
+      ];
+
+      // Масив з цінами на продукти
+      var pricesInStore = [25, 10, 15, 45, 120, 70, 60, 20, 40, 30];
+
+      let userMoney = parseInt(prompt(`Ведіть кількість грошей`, "240 грн"));
+      document.write(`<ul>`);
+      for (let i = 0; i < productsInStore.length; i++) {
+        document.write(
+          `<li>${productsInStore[i]} - ${pricesInStore[i]} грн.</li>`
+        );
+      }
+      document.write(`</ul>`);
+
+      function getFilterProduct(product, prices) {
+        document.write(`<p> Список продуктів які може дозволити собі споживач:</p>
+      <ul>`);
+        for (let i = 0; i < product.length; i++) {
+          if (userMoney - prices[i] > 0) {
+            userMoney -= prices[i];
+            document.write(`<li>${product[i]} - ${prices[i]} грн.</li>`);
+          }
+        }
+        document.write(`<li>Ваша решта складає - ${userMoney} грн </li></ul>`);
+      }
+      getFilterProduct(productsInStore, pricesInStore);
+    </script>
+  </body>
+</html>

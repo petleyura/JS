@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=`, initial-scale=1.0">
+	<title>Задача4</title>
+</head>
+
+<body>
+	<h3>Задача 5</h3>
+    <p>Дано послідовність оцінок учня. Підрахувати кількість:
+		<ul>
+			<li>двійок</li>
+			<li>кількість хороших оцінок (добре, відмінно);</li>
+			<li>кількість оцінок, які нижче середнього.</li>
+		</ul>
+	 </p>
+    <script>
+    let pupilAssessments = []
+	 const numAssessments = parseInt(prompt(`Введіть кількість оцінок яких отримав учень від 1 до 5`, 10))
+	 for (let i = 0; i < numAssessments; i++) {
+		 const Assessments = parseInt(prompt(`Введіть оціноку якиху отримав учень від 1 до 5`, 4))
+		 pupilAssessments.push(Assessments)
+	 }
+
+	 function getSum_2(arr){
+		let sumNum = 0
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i]==2) sumNum++			
+		}
+		return sumNum
+	 }
+
+	 function getSum_4_5(arr){
+		let sumNum = 0
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i] > 3) sumNum++			
+		}
+		return sumNum
+	 }
+	 function getSumLessAverage(arr){
+		let sumNum = 0
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i] < 4) sumNum++			
+		}
+		return sumNum
+	 }
+	 document.write(`<p>Масив оцінок: ${pupilAssessments}</p>`)
+	 document.write(`<p>Кількість двійок: ${getSum_2(pupilAssessments)}</p>`)
+	 document.write(`<p>кількість хороших оцінок (добре, відмінно): ${getSum_4_5(pupilAssessments)}</p>`)
+	 document.write(`<p>кількість оцінок, які нижче середнього: ${getSumLessAverage(pupilAssessments)}</p>`)
+
+	</script>
+</body>
+
+</html>

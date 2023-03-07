@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача0</title>
+  </head>
+
+  <body>
+    <h3>Задача 1.</h3>
+
+    <p>
+      Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+      з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
+      хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+      би одна трійка)).
+    </p>
+
+    <script>
+      let assessments = [];
+      const numK = parseInt(
+        prompt(`Введіть кількість предметів яки були в учня`, 5)
+      );
+      for (let i = 1; i <= numK; i++) {
+        const ball = parseInt(prompt(`Введіть оцінку ${i}-го предмета`, 5));
+        assessments.push(ball);
+      }
+      //let assessments = [4, 5, 4, 3, 2];
+      //let assessments = [4,5,4,3,3]
+      //let assessments = [4, 5, 4, 5, 4];
+      //let assessments = [5, 5, 5, 5, 5];
+
+      function studentAvergeScore(arr) {
+        let summ = 0;
+        for (let i = 0; i < arr.length; i++) {
+          summ += arr[i];
+        }
+        return (summ /= arr.length);
+      }
+
+      function studentCategory(arr) {
+        let category = "";
+        if (studentAvergeScore(arr) === 5) return (category = "Відмміник");
+        else {
+          let minBall = Infinity;
+          for (let i = 0; i < arr.length; i++) {
+            if (minBall > arr[i]) minBall = arr[i];
+          }
+          switch (minBall) {
+            case 2:
+              return (category = "Двійочник");
+            case 3:
+              return (category = "Трійочник");
+            case 4:
+              return (category = "Хорошист");
+          }
+        }
+      }
+      document.write(
+        `Середня оцінка з усіх предметів складає ${studentAvergeScore(
+          assessments
+        )} категорія учня вважається - ${studentCategory(assessments)}`
+      );
+    </script>
+  </body>
+</html>

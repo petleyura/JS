@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача8</title>
+  </head>
+
+  <body>
+    <h3>Задача8</h3>
+
+    <p>
+      Дано одновимірний масив, у якому зберігається певна виграшна сума
+      (елементи заповнюються випадковим чином значеннями від -500 до 500).
+      Надаючи користувачу можливість вибирати номери елементів (поки він не
+      відмовиться). Знаходити сумарний виграш.
+    </p>
+
+    <script>
+      let getMoneyMasiv = [];
+      const numElementsMasiv = parseInt(
+        prompt(`Ведіть бажану кількість рандомніх елементів`, 30)
+      );
+      for (let i = 0; i < numElementsMasiv; i++) {
+        const randomValue = -500 + Math.floor(Math.random() * (500 - -500 + 1));
+        getMoneyMasiv.push(randomValue);
+      }
+      function userMoneyPrize(arr) {
+        let prize = 0;
+        let numOfAttempts = numElementsMasiv;
+        let elementsMasiv = [];
+        let mas = []; //масив для перевірки
+        exit: for (let i = 0; i < arr.length; i++) {
+          let element =
+            parseInt(
+              prompt(
+                `Виберіть будьласка елемент масива від 1 до ${numElementsMasiv}. Кількість спроб ${numOfAttempts} або до відміни `
+              )
+            ) - 1;
+          if (!isFinite(element)) break;
+          for (let j = 0; j < elementsMasiv.length; j++) {
+            if (elementsMasiv[j] === element) {
+              alert("Ви вже обирали цей елемент");
+              i--;
+              continue exit;
+            }
+          }
+          prize += getMoneyMasiv[element];
+          numOfAttempts--;
+          mas.push(getMoneyMasiv[element]); //Для перевірки
+          elementsMasiv.push(element);
+        }
+        console.log(elementsMasiv); //Для перевірки
+        console.log(mas); //Для перевірки
+        return prize;
+      }
+
+      document.write(
+        `<p>Масив з рандомними грошовими вийграшами ${getMoneyMasiv}</p>`
+      );
+      document.write(
+        `<p>Ваш виграш складає ${userMoneyPrize(getMoneyMasiv)}</p>`
+      );
+    </script>
+  </body>
+</html>
