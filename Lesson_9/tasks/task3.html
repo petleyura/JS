@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача3</title>
+  </head>
+
+  <body>
+    <h3>Задача3</h3>
+    <p>
+     Користувач вводить кількість елементів. Створити масив, у якому перші 5 елементів заповнені 1-цями, а інші до кінця масиву заповнені 7-ками.
+    </p>
+
+    <script>
+      const numElements = parseInt(prompt(`Введдіть кількість елементів`));
+      function newArray(numElements) {
+        const newArray = new Array(numElements)
+        if (numElements>5) newArray.fill(1).fill(7, 5);
+        else newArray.fill(1)      
+        return newArray
+      }
+      document.write(
+        `масив з ${numElements} елементів:<br> ${newArray(numElements)}`
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача6</title>
+  </head>
+
+  <body>
+    <h3>Задача6</h3>
+    <p>
+      Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+    </p>
+
+    <script>
+     const arr = [35, 21, 12, 50, 7, 48, 3, 15, 26, 41];
+
+
+     function workingWithArrayElements(arr) {
+      return arr.map((el,item,arr) => arr[0]<arr[item] ? el*2:el )
+     }
+
+     document.write(`Попередній масив: ${arr}
+     Змінений масив: ${workingWithArrayElements(arr)} `)
+
+    </script>
+  </body>
+</html>

@@ -33,12 +33,17 @@
 	 }
 
 	 function minimumVisitors(arr) {
-		let numDay = Infinity
+		
 		let minimalPipleDayVisitors = Infinity
 		for (let i = 0; i < arr.length; i++) {
-			if(minimalPipleDayVisitors>arr[i]) {minimalPipleDayVisitors=arr[i]; numDay = i+1}
+			if(minimalPipleDayVisitors>arr[i]) {minimalPipleDayVisitors=arr[i];}
 			}
-			return numDay
+		let numMinPipleDay=[]
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i]===minimalPipleDayVisitors) numMinPipleDay.push(i+1)
+			
+		}
+			return numMinPipleDay
 	 }
 
 	 function getSumVisitirsOfWeekdays(arr) {

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача8</title>
+  </head>
+
+  <body>
+    <h3>Задача8</h3>
+
+    <p>
+      Дано масив номерів авто. Сформувати новий масив тих, які починаються на
+      «А»
+    </p>
+
+    <script>
+  
+      const numbersAvto = [
+        "АА8214АА",
+        "ІІ7721ВВ",
+        "ОІ9436АМ",
+        "УО55У",
+        "АК1181ВН",
+        "ВХ673СВ",
+        "СВ50Т",
+        "АС6749КІ",
+        "ТР8294ІІ",
+        "КН41Р",
+      ];
+      function filterNumAvto(arr) {
+        let numAvto_A = arr.filter(
+          (numAvto, index, array) => numAvto[0] === "А"
+        );
+        return numAvto_A;
+      }
+      document.write(
+        `Масив з номерами автомобілів: ${numbersAvto} <br> Масив відфільтрованих номерів номерний знак яких починається на "А": ${filterNumAvto(numbersAvto)}`
+      );
+    </script> 
+  </body>
+</html>

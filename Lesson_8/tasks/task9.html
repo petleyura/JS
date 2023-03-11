@@ -1,71 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача9</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=`, initial-scale=1.0" />
-  <title>Задача9</title>
-</head>
+  <body>
+    <h3>Задача 9</h3>
 
-<body>
-  <h3>Задача 9</h3>
+    <p>
+      Морський бій. Користувач вводить кількість клітинок одновимірного масиву
+      та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні
+      кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста,
+      якщо 1 – то це означає, що там є корабель. Користувач вводить номер
+      клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть
+      потоплені усі кораблі.
+    </p>
 
-  <p>
-    Морський бій. Користувач вводить кількість клітинок одновимірного масиву
-    та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні
-    кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста,
-    якщо 1 – то це означає, що там є корабель. Користувач вводить номер
-    клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть
-    потоплені усі кораблі.
-  </p>
-
-  <script>
-    let getMasiveOfShips = [];
-    const numCell = parseInt(prompt(`введіть кількість клітинок`, 10));
-    for (let i = 0; i < numCell; i++) {
-      getMasiveOfShips.push(0);
-    }
-    let numShips = parseInt(
-      prompt(`введіть кількість кораблів але не більше ${numCell}`, 5)
-    );
-    let cellOnShips = numShips;
-    for (let i = 0; i < numCell; i++) {
-      const ships = Math.floor(Math.random() * 2);
-      if (numShips === 0) {
-        getMasiveOfShips[i] = 0;
-      } else if (getMasiveOfShips.length - i > numShips && numShips !== 0) {
-        getMasiveOfShips[i] = ships;
-        if (ships === 1) {
+    <script>
+      let getMasiveOfShips = [];
+      const numCell = parseInt(prompt(`введіть кількість клітинок`, 10));
+      for (let i = 0; i < numCell; i++) {
+        getMasiveOfShips.push(0);
+      }
+      let numShips = parseInt(
+        prompt(`введіть кількість кораблів але не більше ${numCell}`, 5)
+      );
+      let cellOnShips = numShips;
+      for (let i = 0; i < numCell; i++) {
+        const ships = Math.floor(Math.random() * 2);
+        if (numShips === 0) {
+          getMasiveOfShips[i] = 0;
+        } else if (getMasiveOfShips.length - i > numShips && numShips !== 0) {
+          getMasiveOfShips[i] = ships;
+          if (ships === 1) {
+            --numShips;
+          }
+        } else {
+          getMasiveOfShips[i] = 1;
           --numShips;
         }
-      } else {
-        getMasiveOfShips[i] = 1;
-        --numShips;
       }
-    }
-    document.write(`Масив кораблів до початку бою: ${getMasiveOfShips}`);
+      document.write(`${getMasiveOfShips}`);
 
-    function shootOnShips(arr, ships) {
-      for (let i = 0; i < ships; i++) {
-        const shoot = parseInt(prompt(`Введіть номер клітинки для пострілу від 1 до ${numCell} `)) - 1
-        for (let j = 0; j < arr.length; j++) {
-          if (j === shoot) {
-            if (arr[j] == 1) {
-              arr[j] = 0
-              --ships
-              i--
-            } else i--
+      let getShootingOfCell = [];
+
+      /* exit: while (cellOnShips !== 0) {
+        const numOfCellShips = parseInt(
+          prompt(
+            `Введіть номер клітинки від 1' до ${numCell}. Залишилось збити кораблів ${cellOnShips}`
+          ) - 1
+        );
+        if (cellOnShips === 0) break;
+        for (let i = 0; i < getShootingOfCell.length; i++) {
+          if (getShootingOfCell[i] === numOfCellShips) {
+            alert(`Ви вже рорбили постріл в цю клітинку`);
+            ++cellOnShips;
+            continue exit;
+          }
+          if (getMasiveOfShips[numOfCellShips] === 1) {
+            --cellOnShips;
+            getShootingOfCell.push(numOfCellShips);
           }
         }
+        getShootingOfCell.push(numOfCellShips);
+      } */
+
+      exit: for (let i = getMasiveOfShips; (i = 0); i--) {
+        const numOfCellShips = parseInt(
+          prompt(
+            `Введіть номер клітинки від 1' до ${numCell}. Залишилось збити кораблів ${cellOnShips}`
+          ) - 1
+        );
+        for (let j = 0; j < getShootingOfCell.length; j++) {
+          if (getShootingOfCell[j] === numOfCellShips) {
+            alert(`Ви вже рорбили постріл в цю клітинку`);
+            i++;
+            continue exit;
+          }
+        }
+        if (getMasiveOfShips[numOfCellShips] === 1)
+          getShootingOfCell.push(numOfCellShips);
       }
-    }
-    shootOnShips(getMasiveOfShips, cellOnShips)
-    document.write(`<br> Масив кораблів після бою: ${getMasiveOfShips}`);
-
-
-
-  </script>
-</body>
-
+      document.write(`<br> ${getShootingOfCell}`);
+    </script>
+  </body>
 </html>

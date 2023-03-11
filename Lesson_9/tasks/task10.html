@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача9</title>
+  </head>
+
+  <body>
+    <h3>Задача 10</h3>
+
+    <p>
+      Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде
+      містити величину сплаченого податку у грн.
+    </p>
+
+    <script>
+      const arrPrices = [350, 2100, 120, 5000, 700, 4800, 300, 1500, 260, 4100];
+
+      function newArrayPrise_20percent(arr) {
+        return arr.map((price) => price * 0.2);
+      }
+
+      document.write(`масив з цін:${arrPrices} <br>
+        мaсив  сплаченого податку: ${newArrayPrise_20percent(arrPrices)}`);
+    </script>
+  </body>
+</html>
