@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> 8.Масиви</title>
+</head>
+
+<body>
+	<ol>
+		<li>
+			<h2>Задача №1</h2>
+			<p>Знайти суми елементів у вказаній області</p>
+			<ol>
+				<li>
+					<img src="./img/1.jpg.png" alt="">
+				</li>
+				<script>
+					const array = [
+						[1, 2, 3, 4],
+						[2, 3, 4, 5],
+						[3, 4, 5, 6],
+						[4, 5, 6, 7]
+					]
+
+
+					function sumElement(arr) {
+						return arr.reduce((sumRow, elRow, row, table) =>
+							row < Math.ceil(table.length / 2) ? sumRow + table[row].reduce((sumCell, cell, i, rowArr) =>
+								i < Math.ceil(rowArr.length / 2) ? sumCell + cell : sumCell, 0)
+								: sumRow, 0)
+					}
+					document.write(`<p>${sumElement(array)}</p>`);
+				</script>
+				<li>
+
+					<img src="./img/2.png" alt="">
+					<script>
+
+						function sumElement2(arr) {
+							return arr.reduce((sumRow, elRow, row, table) => row < Math.ceil(table.length / 2) ?
+								sumRow + table[row].reduce((sumCell, cell, i, rowArr) => i >= Math.ceil(rowArr.length / 2) ? sumCell + cell : sumCell, 0)
+								: sumRow, 0)
+						}
+
+						document.write(`<p>${sumElement2(array)}</p>`)
+					</script>
+				</li>
+				<li>
+					<p></p>
+					<img src="./img/3.png" alt="">
+
+					<script>
+						function sumTabl(arr) {
+							let sum = 0
+							for (let row = Math.ceil(arr.length / 2); row < arr.length; row++) {
+								arr[row]
+								for (let cell = 0; cell < Math.ceil(arr[row].length / 2); cell++) {
+									arr[row][cell]
+									sum += arr[row][cell]
+								}
+							} return sum
+						}
+						document.write(`<p>${sumTabl(array)}</p>`)
+					</script>
+				</li>
+				<li>
+					<p></p>
+					<img src="./img/4.jpg.png" alt="">
+					<script>
+						function sumTabl2(arr) {
+							let sumCell = 0
+							for (let row = Math.ceil(arr.length / 2); row < arr.length; row++) {
+								for (let cell = Math.ceil(arr[row].length / 2); cell < arr[row].length; cell++) {
+									sumCell += arr[row][cell]
+								}
+							} return sumCell
+						}
+						document.write(`<p>${sumTabl2(array)}</p>`)
+					</script>
+				</li>
+				<li>
+					<p>Суму парних рядків</p>
+					<script>
+						function sumPairedNum(arr) {
+							let sum = 0
+							arr.forEach((row, indexRow, table) => {
+								if (indexRow % 2 !== 0) {
+									for (const cell of row) {
+										sum += cell
+									}
+								}
+
+							});
+							return sum
+						}
+						document.write(`<p>${sumPairedNum(array)}</p>`)
+					</script>
+
+				</li>
+				<li>
+					<p>Суму непарних стовпців</p>
+					<script>
+						function sumOfOddColumns(arr) {
+							let sum = 0
+							for (const row of arr) {
+								for (let cell = 0; cell < row.length; cell += 2) {
+									const element = row[cell]
+									sum += element
+
+								}
+							} return sum
+						}
+						document.write(`<p>${sumOfOddColumns(array)}</p>`)
+					</script>
+				</li>
+				<li>
+					<p>У парних рядках – непарні стовпці, у непарних – парні.</p>
+					<script>
+						function sumTableInEvenRowsOddColumnsInOddEvenColumns(arr) {
+							let sum = 0
+							for (let row = 0; row < arr.length; row++) {
+								for (let cell = 0; cell < arr[row].length; cell++) {
+									if (row % 2 === 0) {
+										if (cell % 2 !== 0) sum += arr[row][cell]
+									} else {
+										if (cell % 2 === 0) sum += arr[row][cell]
+									}
+								}
+							} return sum
+						}
+						document.write(`<p>${sumTableInEvenRowsOddColumnsInOddEvenColumns(array)}</p>`)
+					</script>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<h2>Задача №2</h2>
+			<p>Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</p>
+			<script>
+				const numStors = parseInt(prompt(`Введіть кількість магазинів`, 3))
+				function rundomProfit(min = 20, max = 500) {
+					return min + Math.floor(Math.random() * (max - min + 1))
+				}
+				let arrayStorse = []
+				function addTheProfitsOfStoresToTheArray(arr, numStors) {
+					arr = new Array(numStors)
+					for (let stor = 0; stor < arr.length; stor++) {
+						arr[stor] = []
+						for (let dayWeek = 0; dayWeek < 7; dayWeek++) {
+							/* const profitDay = rundomProfit() */
+							arr[stor].push(rundomProfit())
+						}
+					}
+					return arr
+				}
+				arrayStorse = addTheProfitsOfStoresToTheArray(arrayStorse, numStors)
+				// виводим таблицю на сторінку
+				function tablStors(arr) {
+					document.write(`<table  border="2">
+				<tbody>`)
+					for (let stor = 0; stor < arr.length; stor++) {
+						document.write(`<tr>`)
+						for (let dayWek = 0; dayWek < arr[stor].length; dayWek++) {
+							document.write(`<td>${arr[stor][dayWek]}</td>`)
+						}
+						document.write(`</tr>`)
+					}
+					document.write(`</tbody>
+			</table>`)
+				}
+				tablStors(arrayStorse)			
+			</script>
+
+		<li>
+			<p>загальний прибуток кожного масиву за тиждень;</p>
+			<script>
+				function weeklyStoreRevenue(arr) {
+					return arr.map(store => store.reduce((sum, el) => sum + el, 0))
+				}
+				document.write(`<p>${weeklyStoreRevenue(arrayStorse)}</p>`)
+			</script>
+		</li>
+		<li>
+			<p>загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і
+				т.д.);</p>
+			<script>
+				function profitOfStoresByDayOfTheWeek(arr) {
+					let newArray = []
+					for (let column = 0; column < 7; column++) {
+						let sumColumn = 0
+						for (let row = 0; row < arr.length; row++) { sumColumn += arr[row][column] };
+						newArray.push(sumColumn)
+					} return newArray
+				}
+
+				document.write(`<p>${profitOfStoresByDayOfTheWeek(arrayStorse)}</p>`)
+			</script>
+		</li>
+		<li>
+			<p>загальний прибуток за робочі дні</p>
+			<script>
+				function storesProfitRangeDuringTheWeek(stores, firstDay = 1, lastDay = 5) {
+					let arr = []
+					for (let store = 0; store < stores.length; store++) {
+						let sumStoreProfitWeek = 0
+						for (let dayProfit = firstDay - 1; dayProfit < lastDay; dayProfit++) {
+							sumStoreProfitWeek += stores[store][dayProfit]
+						}
+						arr.push(sumStoreProfitWeek)
+					} return arr
+				}
+				document.write(`<p>${storesProfitRangeDuringTheWeek(arrayStorse)}</p>`)
+			</script>
+		</li>
+		<li>
+			<p>загальний прибуток за вихідні дні</p>
+			<script>
+				document.write(`<p>${storesProfitRangeDuringTheWeek(arrayStorse, 6, 7)}</p>`)
+			</script>
+		<li>
+			<p>максимальний прибуток за середу</p>
+			<script>
+				function maxProfitForWednesday(arr) {
+					let arr2 = arr.map((el, i, array) => el.filter((el, index, array) => index === 2))
+					/* return arr2.reduce((max,el,i,array)=> array[i] > max? el : max, -Infinity ) */
+					let max = -Infinity
+					console.log(arr2);
+					for (let i = 0; i < arr2.length; i++) {
+						if (max < arr2[i]) max = arr2[i]
+					}
+					return max
+				}
+				document.write(`<p>${maxProfitForWednesday(arrayStorse)}</p>`)
+						// console.log(maxProfitForWednesday(arrayStorse));
+			</script>
+		</li>
+		<li>
+			<p>сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200</p>
+			<script>
+				function arrayProfitGreaterThan200(arr) {
+					return arr.flat().filter(el => el > 200)
+				}
+				document.write(`<p>${arrayProfitGreaterThan200(arrayStorse)}</p>`)
+			</script>
+		</li>
+		<li>
+			<p>відсортувати кожен тиждень за зростанням</p>
+			<script>
+				function sortEachWeekByAscendingOrder(arr) {
+					return arr.map(el => el.sort((el1, el2) => el1 - el2))
+				}
+
+				document.write(`<p>${tablStors(sortEachWeekByAscendingOrder(arrayStorse))}</p>`)
+			</script>
+		</li>
+		<li>
+			<p>відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні
+				рядків потрібно порівнювати максимальні елементи у кожному з цих рядків</p>
+			<script>
+
+				function itemMaxNumArra(arr) {
+					let max = -Infinity
+					for (const el of arr) {
+						if (el > max) max = el
+					}
+					return max
+				}
+				function sortRow(arr) {
+
+					return arr.sort((el1, el2) => itemMaxNumArra(el2) - itemMaxNumArra(el1))
+				}
+				document.write(`<p>${tablStors(sortRow(arrayStorse))}</p>`)
+						// console.log(sortRow(arrayStorse));
+			</script>
+		</li>
+		<li>
+			<p>упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба
+				знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів
+				повинен іти раніше).</p>
+			<script>
+
+				function sortEachWeekDescending(arr) {
+					return arr.sort((el1, el2) => el2.reduce((sum, el) => sum + el, 0) - el1.reduce((sum, el) => sum + el, 0))
+				}
+				document.write(`<p>${tablStors(sortEachWeekDescending(arrayStorse))}</p>`)
+			</script>
+		</li>
+	</ol>
+	</li>
+	<li>
+		<h2>Задача №3</h2>
+		<ol>
+			<li>
+				<p>Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач
+					стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не
+					закінчаться снаряди.</p>
+				<img src="" alt="">
+				<script>
+					//Рандомні числа
+					function randomNum(max = 5) {
+						return 0 + Math.floor(Math.random() * (max - 0 + 1))
+					}
+					//Поле боя без кораблвів
+					function battleground() {
+						let arr = []
+						for (let row = 0; row < 6; row++) {
+							arr.push(new Array(6).fill(0))
+						} return arr
+					}
+
+					let battlegroundWithoutShips = battleground()
+					//Поле бою з кораблями
+					function randomShipsOfBattleground(arr) {
+						let ships = 5
+						console.log(arr);
+						do {
+							const row = randomNum()
+							const column = randomNum()
+							console.log(row, column, arr[row][column]);
+							if (arr[row][column] !== 1) {
+								arr[row][column] = 1
+								ships--
+							}
+						} while (ships > 0);
+						return arr
+					}
+					let battlegroundShips = randomShipsOfBattleground(battlegroundWithoutShips)
+
+					console.log(battleground());
+					console.log(battlegroundShips);
+					//Гра морский бій
+					function playSeaBattle(arr) {
+						let numOfAttempts = parseInt(prompt(`Ведіть кількість пострілів для гри`, 7))
+						let arr2 = [...arr]
+						console.log(arr2);
+						let ships = 5
+						do {
+							const selectRow = parseInt(prompt(`Оберіть номер рядка від 1 до 6`)) - 1
+							const selectColumn = parseInt(prompt(`Оберіть номер колонки від 1 до 6`)) - 1
+							if (arr2[selectRow][selectColumn] === 1) {
+								ships--
+								numOfAttempts--
+								arr2[selectRow][selectColumn] = 2
+								alert(`Вітаємо ви попали!!!!`)
+							} else if (arr2[selectRow][selectColumn] === 2) {
+								alert(`Ви не попали, в цю ячейку був здійснений постріл!!!!`)
+								numOfAttempts--
+							} else {
+								arr2[selectRow][selectColumn] = 2
+								numOfAttempts--
+								alert(`Ви не попали!!!!`)
+
+							}
+						} while (ships > 0 && numOfAttempts > 0);
+						ships === 0 ? alert('Вітаємо ви збили всі кораблі') : alert(`Ви не виграли. Залишилося ${ships}`)
+						return arr2
+					}
+
+					let EndOfTheGame = playSeaBattle(battlegroundShips)
+					
+					document.write(`Виводимо поле гри після бою ${tablStors(EndOfTheGame)}`)
+					
+				</script>
+			</li>
+
+		</ol>
+	</li>
+	</ol>
+
+	<!-- <style>
+	li > *{
+		display: inline-block;
+		align-items: start;
+	}
+</style> -->
+</body>
+
+</html>
