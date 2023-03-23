@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача4</title>
+  </head>
+
+  <body>
+    <h3>Задача 4</h3>
+  <p>Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за
+    зразком.
+  </p>
+  <img src="../img/1.png" alt="">
+  <table border="2"><tbody><tr><td>1</td></tr></tbody></table>
+    <script>
+      const arr = [99, 10, 183, 76, 123,54,89];
+      document.write(`<p>Стартовий масив : ${arr}</p>`)    
+    </script>
+    <div class="body__tabl">
+      <div class="tabl">
+        <h3>Сортування бульбашкою</h3>
+        <script>
+          let arr1 = JSON.parse(JSON.stringify(arr))
+
+          function sortWithBall(arr) {
+            document.write(`<table border="2"><tbody><tr>
+             `)
+             for (const t of arr) {
+              document.write(`<td>${t}</td>`)
+             }
+             document.write(`</tr>`)
+
+              let chenged              
+              do {
+                chenged = false;
+                for (let i = 1; i < arr.length; i++) {
+
+                  if (arr[i - 1] > arr[i]) {
+                    [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]                    
+                    chenged = true
+                     document.write(`<tr>`)
+                    for (const j of arr) {
+                      document.write(`<td>${j}</td>`)
+                    }
+                    document.write(`</tr>`)
+                  }
+                }
+              } while (chenged);
+              document.write(`</tbody></table>`)
+            }
+            sortWithBall(arr1)
+        </script>
+      </div>
+      <div class="tab2">
+        <h3>Сортування змішуванням</h3>
+        <script>
+           let arr2 = JSON.parse(JSON.stringify(arr))
+
+           function sortingByMixing(arr) {
+              let leftInd = 0
+              let rightInd = arr.length - 1
+              document.write(`<table border="2"><tbody><tr>
+             `)
+             for (const t of arr) {
+               document.write(`<td>${t}</td>`)
+             }
+             document.write(`</tr>`)
+              
+              while (leftInd < rightInd) {
+                for (let i = leftInd; i < rightInd; i++) {
+                  if (arr[i] > arr[i + 1]) {
+                    [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
+                     document.write(`<tr>`)
+                    for (const j of arr) {
+                      document.write(`<td>${j}</td>`)
+                    }
+                    document.write(`</tr>`)
+                  }
+                }
+                rightInd--
+                for (let i = rightInd; i > leftInd; i--) {
+                  if (arr[i] < arr[i - 1]) {
+                    [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]]
+                     document.write(`<tr>`)
+                    for (const j of arr) {
+                      document.write(`<td>${j}</td>`)
+                    }
+                    document.write(`</tr>`)
+                  }
+                } leftInd++
+              }  document.write(`</tbody></table>`)
+            }
+            sortingByMixing(arr2)
+        </script>
+      </div>
+      <div class="tab3">
+        <h3>Cортування включеннями</h3>
+        <script>
+          let arr3 = JSON.parse(JSON.stringify(arr))
+  
+          function sortedArray(arr) {
+          document.write(`<table border="2"><tbody><tr>
+             `)
+            for (const t of arr) {
+              document.write(`<td>${t}</td>`)
+            }
+            document.write(`</tr>`)
+          for (let k = 1; k < arr.length; k++) { 
+            const element=arr[k]; 
+            let i=k - 1 
+            while (i>= 0 && arr[i] > element) {
+            arr[i + 1] = arr[i]
+            i = i - 1
+             document.write(`<tr>`)
+              for (const j of arr) {
+                document.write(`<td>${j}</td>`)
+              }
+              document.write(`</tr>`)
+            }
+            arr[i + 1] = element
+              document.write(`<tr>`)
+            for (const j of arr) {
+              document.write(`<td>${j}</td>`)
+            }
+            document.write(`</tr>`)
+            }  document.write(`</tbody></table>`)
+            }
+            sortedArray(arr3)
+        </script>
+      </div>
+    </div>
+    <style>
+      div.body__tabl {
+display: flex;  flex-wrap: wrap;
+      }
+      div.body__tabl >div{
+        margin-right: 20px;
+      }
+    </style>
+  </body>
+</html>

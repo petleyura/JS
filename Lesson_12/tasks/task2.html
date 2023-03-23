@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача1</title>
+  </head>
+  <body>
+    <h3>Задача2</h3>
+    <p>
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.
+    </p>
+    <script>
+       function randomArray (arr){      
+     for (let i = 0; i < 30; i++) {
+      const randomNum = Math.floor(Math.random()*51)  
+      arr.push(randomNum)  
+     } return arr
+    }
+    const arrayRandomNum = []
+    randomArray(arrayRandomNum)    
+    document.write(arrayRandomNum)
+    let arrayCopy = JSON.parse(JSON.stringify(arrayRandomNum))
+
+    function sortingByMixing (arr) {
+     let leftInd = 0
+      let rightInd = arr.length - 1
+      let exchangeCounter =0
+      while (leftInd < rightInd) {
+        for (let i = leftInd; i < rightInd; i++) {
+          if(arr[i] > arr[i+1]) {
+            [arr[i], arr[i+1]]=[arr[i+1],arr[i]] 
+            exchangeCounter++
+          }        
+        }
+        rightInd--
+        for (let i = rightInd; i > leftInd; i--) {
+          if(arr[i]<arr[i-1]) { 
+            [arr[i],arr[i-1]]=[arr[i-1],arr[i]]
+            exchangeCounter++
+          }          
+        }leftInd++
+      } return exchangeCounter
+    }
+
+    document.write(`<p> кількіість змін - ${sortingByMixing(arrayCopy)}`)
+    document.write(`<p> відсортований масив - <br>${arrayCopy}`)
+    </script>
+  </body>
+</html>
