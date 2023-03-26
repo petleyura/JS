@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача1</title>
+  </head>
+  <body>
+    <h3>Задача2</h3>
+  <p>Нехай <span><img src="../img/2_1.bmp" alt=""></span>, де <span><img src="../img/2_2.bmp" alt=""></span>. Визначити
+    <span><img src="../img/2_3.bmp" alt=""></span>. Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів</p>
+    <script>
+        function recursia(n=6) {
+          
+  if (n === 1) { 
+    return 3;
+  } else if (n === 2) return 5
+  else
+  { 
+    return recursia(n-1) + 2 * recursia(n-2);
+  }
+}
+
+    
+      
+    document.write(`<p> ${recursia()}`)
+
+      function sumN (n=6) {
+        let j = n+1
+        let xn=0
+        let xi=[1,1]  
+        for (let i = 2; i <=j; i++) {
+          xn=xi[i-1]+2*xi[i-2]
+          xi.push(xn)                 
+        }  
+        return xn
+      }
+      document.write(`<p>${sumN()}</p>`)
+    </script>    
+    <style>
+      span {
+        vertical-align: middle;
+      }
+    </style>
+  </body>
+</html>

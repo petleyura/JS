@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача3</title>
+</head>
+
+<body>
+  <h3>Задача3</h3>
+  <p>З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами видавати по одне значення від заданого мінімального до заданого максимального. Якщо значення досягне максимального, то наступним буде мінімальне значення. З використанням цієї функції реалізувати перебір номерів місяців. </p>
+  <!-- <table border="2">
+    <tbody>
+      <tr>
+        <td></td>
+      </tr>
+    </tbody>
+  </table> -->
+  <script>
+    const minNum = parseInt(prompt(`введіть мінімальне значення`))
+    const maxNum = parseInt(prompt(`введіть максимальне значення`))
+    const months = [
+  "Січень",
+  "Лютий",
+  "Березень",
+  "Квітень",
+  "Травень",
+  "Червень",
+  "Липень",
+  "Серпень",
+  "Вересень",
+  "Жовтень",
+  "Листопад",
+  "Грудень"
+];
+
+
+    function closingFunction (min) {  
+         let counter = min
+        function num() {
+          if (counter > 12 ) counter = 1
+          return counter++
+        }
+        return num
+    }   
+
+    function listOfMonthNumbers(min,max,arr) {
+       
+      let numMonth = closingFunction(min)
+      document.write(`<table border="2">
+    <tbody>
+      <tr>
+        <td>min/max</td><td>№місяця</td><td>місяць</td>
+      </tr>`)
+      for (let i = min; i <= max; i++) {
+        const month =  numMonth()
+        document.write(`<tr>
+        <td>${i}</td><td>${month}</td><td>${arr[month-1]}</td>
+      </tr>`)        
+      }
+      document.write(`</tbody>
+  </table>`)
+    }    
+    listOfMonthNumbers(minNum,maxNum, months);
+   </script>
+</body>
+
+</html>

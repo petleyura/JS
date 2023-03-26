@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача4</title>
+  </head>
+
+  <body>
+    <h3>Задача 4</h3> <br>
+  <p>З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами видавати по одну букву наперед заданого слова. З використанням нього розробити гру «Прекладач». Виводимо для користувача опис цього слова і по одну букву користувач вводить переклад цього слова. Підрахувати кількість вгаданих букв.
+  </p>
+  <script>
+    const ukrainianArray = ["один", "два", "три", "чотири"];
+    const englishArray = ["one", "two", "three", "four"];
+
+    function litterArray(arr) {
+      let indexArr = 0
+      let max = arr.length-1
+      function litter(){
+      if( indexArr<=max)  {
+        return arr[indexArr++]               
+      } else return false
+      indexArr++; 
+    }return litter     
+    }
+    
+    function randomNum (){
+    return Math.floor(Math.random()*5)}
+
+      function game(arrUA,arrEN) { 
+        const indexWord = randomNum()
+        const worldUA = arrUA[indexWord] 
+        const worldEN = arrEN[indexWord] 
+       let arrayWord=[]
+        for (let i=0; i<worldEN.length; i++) {
+          arrayWord.push(`_`)          
+        }   
+        alert(`Переведіть по літерам слово (${worldUA}) на англійську мову. Попередній результат: ${arrayWord}`)         
+               
+          const litter = litterArray(worldEN)          
+          for (let i = 0; i < worldEN .length; i++) {
+            let litterOnArr = litter()
+            let nextLitter = prompt(`Ведіть ${i+1} літеру слова (${worldUA}).`)
+            if (litterOnArr===nextLitter) {
+              alert(`Ви вгадали літеру`)
+              arrayWord[i] = nextLitter
+            } else alert(`Ви не вгадали літеру`)            
+          }       
+       alert(`Ваш результат ${arrayWord}`)         
+      }
+     game(ukrainianArray,englishArray)
+      
+  </script>
+  </body>
+</html>

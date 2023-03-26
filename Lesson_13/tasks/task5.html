@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача4</title>
+  </head>
+
+  <body>
+    <h3>Задача 5</h3>
+    <p>Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка.
+    </p>
+    <script>
+    function sumNum (num1,num2){
+      return num1+num2
+    }
+    function randumNum (){
+      return 1+Math.floor(Math.random()*41)
+    }
+
+function summ(num = 1) { 
+  let time=0
+  if (num>1) time = 10000
+  setTimeout(() => {      
+     if(num<5){ 
+      let num1 = randumNum ()
+      let num2 = randumNum ()
+      let resultSum = parseInt(prompt(`Введіть результат суми числа ${num1} та числа ${num2}`))
+      if(resultSum === sumNum(num1,num2)) alert('Правельно'); 
+      else alert('не правельно');     
+      summ(num+1)
+    }}, time)} 
+31
+  summ()
+    </script>
+  </body>
+</html>
