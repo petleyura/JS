@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача4</title>
+  </head>
+
+  <body>
+    <h3>Задача 5</h3>
+    <p>Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким
+      індексом.
+    </p>
+    <script>
+     const arrayName  = ['Andrey','Olga','Yuriy', 'Denis', 'Olga','Denis','Maksim', 'Olga']
+     arrayName.sort()
+     function searchNameOlga (arr, name= 'Olga') {
+     let start = 0
+     let end = arr.length - 1
+     while(start<=end){
+      const middle = Math.floor((start + end)/2)
+      if(arr[middle]===name) return middle
+      if(arr[middle] < name) start = middle + 1
+      if(arr[middle] > name) end = middle - 1
+     }
+     return -1
+     }
+     document.write(`<p>${arrayName}</p> `)
+    document.write(`<p>${searchNameOlga(arrayName)}</p>`)
+    </script>
+  </body>
+</html>

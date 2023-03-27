@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача0</title>
+</head>
+
+<body>
+  <h3>Задача 1.</h3>
+
+  <p>Описати масив об’єктів – сайтів розроблених компанією з такими властивостями <br>
+    ----- Властивості ------
+  <ul>
+    <li>назва компанії на час розробки (назву періодично змінюють)</li>
+    <li> власник компанії</li>
+    <li> споснсори (масив спонсорів)
+      <ul>
+        <li>прізвище спонсора</li>
+        <li>ім’я спонсора</li>
+        <li>сума вкладень спонсора</li>
+      </ul>
+    </li>
+    <li> рік випуску</li>
+    <li> вартість сайту</li>
+  </ul>
+  Задача
+  <ol>
+    <li>загальну вартість усіх сайтів</li>
+    <li>кількість сайтів, що було зроблено між 2000 та 2009 рр.</li>
+    <li>кількість сайтів, де сума спонсорських вкладень була більшою за 100000</li>
+    <li>створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)</li>
+    <li>знайти рік, коли прибуток був найбільшим</li>
+    <li>упорядкувати список за спаданням прибутку</li>
+    <li>Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</li>
+  </ol>
+  </p>
+
+  <script>
+    const companies = [
+        {
+          name: "ABC Inc.",
+          owner: "John Smith",
+          sponsors: {
+              lastName: "Johnson",
+              firstName: "Alice",
+              investment: 17000
+                 },
+            
+          year: 2010,
+          websiteCost: 5000
+        },
+        {
+          name: "XYZ Corp.",
+          owner: "Jane Doe",
+          sponsors: 
+            {
+              lastName: "Smith",
+              firstName: "Charlie",
+              investment: 15000
+            },
+            
+          year: 2015,
+          websiteCost: 10000
+        },
+        {
+          name: "Рога і копита",
+          owner: "Jane Doe",
+          sponsors: 
+            {
+            lastName: "Brown",
+            firstName: "Bob",
+            investment: 20000
+            },            
+          year: 2008,
+          websiteCost: 15000
+        },
+        {
+          name: "XYZ Corp.",
+          owner: "Jane Doe",
+          sponsors: 
+             {
+            lastName: "Lee",
+            firstName: "David",
+            investment: 25000
+              }, 
+            
+          year: 2022,
+          websiteCost: 7000
+        },
+        
+      ];
+      const sumWebsiteCost = companies.reduce((sum, companie) => sum + companie.websiteCost,0)
+        document.write(`<p>загальну вартість усіх сайтів = ${sumWebsiteCost}</p>`)
+      const numWebsiteFrom2000to2009 = companies.reduce((sumNum, companie) => companie.year>2000&& companie.year < 2009? sumNum+1:sumNum,0)
+       document.write(`<p>кількість сайтів, що було зроблено між 2000 та 2009 р = ${numWebsiteFrom2000to2009}</p>`)
+       const numWebsiteSponsorsInvestmentMore10000 = companies.reduce((sumNum,companie) => companie.sponsors.investment > 10000? sumNum + 1: sumNum,0)
+       document.write(`<p>кількість сайтів, де сума спонсорських вкладень була більшою за 10000 = ${numWebsiteSponsorsInvestmentMore10000}</p>`)
+       const sponsorsName = companies.map(companie => [companie.sponsors.lastName, companie.sponsors.firstName])      
+       //document.write(`<p>створити загальний список усіх спонсорів = ${sponsorsName}</p>`)
+        for (const el of sponsorsName) {
+            document.write(`<p>${el}</p>`)
+          }
+        function profitYear(arr) {
+          let max=-Infinity
+          let year = 0
+          for (const profit of arr) {
+            if (profit.sponsors.investment>max) {
+              max = profit.sponsors.investment
+              year = profit.year
+            }
+          } return year
+        }  
+        const maxProfitYaer = profitYear(companies)
+        document.write(`<p>знайти рік, коли прибуток був найбільшим = ${maxProfitYaer}</p>`)
+        const profitList = companies.map(el => el.sponsors.investment).sort((el1,el2) => el1-el2)
+        for (const el of profitList) {
+            document.write(`<p>${el}</p>`)
+          }
+
+          const profitTo10000 = [], profitMore10000 = []
+          for (const companie of companies) {
+            if(companie.websiteCost<=10000) {
+              profitTo10000.push(JSON.parse(JSON.stringify(companie)))
+            } else profitMore10000.push(JSON.parse(JSON.stringify(companie)))
+          }
+          console.log(profitTo10000);
+          console.log(profitMore10000);
+    </script>
+    
+</body>
+
+</html>
