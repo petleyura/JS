@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача 6</title>
+</head>
+
+<body>
+  <h3>Задача 6</h3>
+  <p>Розробити клас "Керівник танців"</p>
+
+  <script>
+    // Масив імен хлопців
+      const boysNames = ['Олександр', 'Максим', 'Іван', 'Артем', 'Василь', 'Дмитро', 'Олег', 'Микита', 'Богдан', 'Юрій'];
+
+      // Масив імен дівчат
+      const girlsNames = ['Анастасія', 'Вікторія', 'Дарина', 'Єлизавета', 'Ірина', 'Катерина', 'Марія', 'Наталія', 'Олена', 'Софія'];
+
+      class danceDirector {
+        constructor(arrBoys,arrGirls){
+          this.arrayBoysNames =arrBoys,
+          this.arrayGirlsNames = arrGirls
+        }
+        randomNameBoys(){
+          return this.arrayBoysNames[Math.floor(Math.random()* 10)]
+        }
+        randomNameGirls(){
+          return this.arrayGirlsNames[Math.floor(Math.random()* 10)]
+        }
+        toString(){
+          alert(`Пара ${this.randomNameBoys()} і ${this.randomNameGirls() } !`)
+        }
+        run(){
+          let run = setInterval(() => this.toString(),5000)
+        }
+      }
+
+      const denceBatl = new danceDirector(boysNames,girlsNames)
+      denceBatl.run()
+
+  </script>
+</body>
+
+</html>

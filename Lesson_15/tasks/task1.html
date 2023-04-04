@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача0</title>
+</head>
+
+<body>
+  <h3>Задача 1.</h3>
+
+  <p>
+    Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+  </p>
+
+  <script>
+   const object1 = {
+    array: [23,22,1,34,55,36,11],
+    getum: function () {
+      return this.array.reduce((sum,el)=> sum + el, 0)
+    }
+   }
+   document.write(`object1.array ${object1.array}<br>`)
+
+   const object2 = {
+    array: [1,3,43,2,55,6,15,42],
+    increase: function (min,max) {
+      return this.array.reduce((increase,el)=> min<=el&&el<=max? increase*el:increase,1)
+    }
+   }
+   document.write(`object2.array ${object2.array}<br>`)
+   console.log(object2.increase(2,6));
+   //використати call
+   document.write(`Використати call (object1.getum.call(object2)) = ${object1.getum.call(object2)} <br> `)
+   document.write(`Використати call (object2.increase.call(object1, 10,25)) ${object2.increase.call(object1, 10,25)} <br>`)
+
+   //використати apply
+   document.write(`Використати apply (object1.getum.apply(object2)) = ${object1.getum.apply(object2)} <br> `)
+    document.write(`Використати apply (object2.increase.apply(object1, [10,25])) ${object2.increase.apply(object1, [10, 25])} <br>`)
+  </script>
+    
+</body>
+
+</html>

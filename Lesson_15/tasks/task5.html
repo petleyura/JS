@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача4</title>
+</head>
+
+<body>
+  <h3>Задача 5</h3>
+  <p>Розробити клас Baner
+  </p>
+  <a href=""><img src="" alt=""></a>
+  <script>
+    const images = [
+      'https://picsum.photos/id/237/200/300',
+      'https://picsum.photos/id/238/200/300',
+      'https://picsum.photos/id/239/200/300',
+      'https://picsum.photos/id/240/200/300',
+      'https://picsum.photos/id/241/200/300',
+      'https://picsum.photos/id/242/200/300',
+      'https://picsum.photos/id/243/200/300',
+      'https://picsum.photos/id/244/200/300',
+      'https://picsum.photos/id/245/200/300',
+      'https://picsum.photos/id/246/200/300'
+    ];
+    const websites = [
+      'https://google.com',
+      'https://facebook.com',
+      'https://twitter.com',
+      'https://instagram.com',
+      'https://linkedin.com',
+      'https://github.com',
+      'https://youtube.com',
+      'https://stackoverflow.com',
+      'https://reddit.com',
+      'https://amazon.com'
+    ];
+    function banerArray(arrimg, arrSite) {
+      const arrLength = arrimg.length
+      let arrNew = []
+      for (let i = 0; i < arrLength; i++) {
+        arrNew.push({
+          img: arrimg[i],
+          link: arrSite[i]
+        })
+
+      } return arrNew
+    }
+    const baner = banerArray(images, websites)
+    console.log(baner);
+    class Baner {
+      constructor(arr) {
+        this.array = arr
+      }
+      randomLinkAndImg () {
+        const arrayLenght = this.array.length
+        return Math.floor(Math.random()* (arrayLenght+1))
+      }
+      bannerOutput () {
+        const randomIndex = this.randomLinkAndImg()
+        document.write(`<a href="${this.array[randomIndex].link}"><img src="${this.array[randomIndex].img}" alt=""></a>`)
+      }
+    }
+    const banerLink = new Baner(baner)
+   banerLink.bannerOutput()
+  </script>
+</body>
+
+</html>

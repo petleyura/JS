@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача1</title>
+</head>
+
+<body>
+  <h3>Задача2</h3>
+  <p>.Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.</p>
+  <p>
+    0- пусте поле
+    1- заєць
+    2- ваш постріл
+  </p>
+  <script>
+    let shoottingRange = {
+      fildWithHares: [0,1,1,0,0,1,1,0,0,0,1,0],     
+      shotGun: function (numArr) {
+        for (let i = 0; i < this.fildWithHares.length; i++) {
+          if(i === numArr) {
+            if (this.fildWithHares[i]===1) {alert(`Ви попали`)
+          this.fildWithHares[i]=2}
+          else {
+            alert(`Ви не попали!`)
+            this.fildWithHares[i] = 2}
+          }         
+        }       
+      },
+      toString: function () {
+        return `${this.fildWithHares}`
+      }
+    }
+    const arrayLengthFildWithHares = shoottingRange.fildWithHares.length
+    const shot = (parseInt(prompt(`введіть № клітинки поля від 1 до ${arrayLengthFildWithHares} `)) -1)
+    shoottingRange.shotGun(shot)
+   
+    document.write(`${shoottingRange} <br>`)
+  </script>
+</body>
+
+</html>

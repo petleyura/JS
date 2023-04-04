@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача3</title>
+</head>
+
+<body>
+  <h3>Задача3</h3>
+  <p>Створити об’єкт «Авто».
+  </p>
+
+  <script>
+    function Auto(initTitle, initTankSize, initNumOfLiters, initNumOfSeats, initNumOfPassenger) {
+        this.title = initTitle,
+        this.tankSize=initTankSize, 
+        this.numOfLiters = initNumOfLiters, 
+        this.numOfSeats = initNumOfSeats, 
+        this.numOfPassenger=initNumOfPassenger
+
+    }
+    Auto.prototype.gasStation = function (numGas) {
+      let remainder =  this.tankSize - this.numOfLiters
+      if(remainder>=numGas) {
+        this.numOfLiters += numGas
+        alert(`Бак заправлени на ${numGas}л. Всього палива ${this.numOfLiters}`)
+      }
+      else alert(`Кількість отримуємого палива перевищує залишковий об'єм порожньої частини баку `)
+    }
+
+    Auto.prototype.toString = function() {
+      return `Кількість пасажирів в автомобілі ${this.numOfPassenger}`
+    }
+    Auto.prototype.addPassenger = function(numPassenger) {
+      let freePlaces = this.numOfSeats- this.numOfPassenger
+      if(freePlaces>=numPassenger) {
+        this.numOfPassenger += numPassenger
+        alert(`в автомобіль зайшло ${numPassenger} пасажирів. Всього ${this.numOfPassenger} чоловік`)
+      }
+      else alert(`Кількість пасажирів перевищує кількість вільних місць`)
+    }
+
+    Auto.prototype.removalOfPassengers = function (numPassenger) {
+      if( this.numOfPassenger>=numPassenger) {
+        this.numOfPassenger -= numPassenger
+        alert(`З автомобіля вийшло ${numPassenger} пасажирів. Всього ${this.numOfPassenger} залишилося чоловік`)
+      }
+      else alert(`Помилка. неможливо вийти більше пасажирів ніж їх фактична кількість`)
+    }
+
+    let audi = new Auto(`Audi A8`, 65, 37,8,3)
+
+  </script>
+</body>
+
+</html>
