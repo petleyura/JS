@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача 1</title>
+</head>
+
+<body>
+  <h3>Задача 1.</h3>
+  <p>
+    Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється структурою із трьома
+    полями. Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. Введення та
+    виведення дати реалізувати за допомогою методу toString.
+  </p>
+
+  <script>
+    class TDate {
+      #day
+      #month 
+      #year
+      constructor(initDay, initMonth, initYear) {
+          this.Day = initDay,
+          this.Month = initMonth,
+          this.Year = initYear
+      }
+      get Day(){
+        return this.#day
+      }
+      get Month(){
+        return this.#month
+      }
+      get Year(){
+        return this.#year
+      }
+      set Day (newDay) {        
+        if (newDay<1||newDay>31) { document.write(`Працює`)
+          throw new Error('Некоректна введений день')}
+        else return this.#day=newDay
+      }
+      set Month(newMonth){
+        if(newMonth <= 0 || newMonth > 12)
+         throw new Error('Некоректна ведений місяць')
+       else return this.#month = newMonth
+      }
+      set Year(newYear){
+        if(newYear <= 0) 
+        throw new Error('Некоректна ведений рік')
+       else return this.#year=newYear
+      
+      }
+      toString() {
+        return `Дата: день місяця - ${this.Day}, місяць - ${this.Month}, рік - ${this.Year} <br>`
+      }
+      get isLeapYear() {
+        return (this.Year % 4 === 0 && (this.Year % 100 !== 0 || this.Year % 400 === 0))?[0,31,60,91,121,152,182,213,244,274,305,335,366]:[0,31,59,90,120,151,181,212,243,273,304,334,365]
+      }
+      sumDay(numDays) { //Метод знаходження додатніх та відємних днів
+       
+        let sumDayManthOfYear =  this.isLeapYear            
+        let startNumDays= sumDayManthOfYear[this.Month-1]+this.Day //Змінна яка рахує який сьогодні день від початку року
+        let lastDay = startNumDays // Змінна останній день яка рахує пиймає значення останнього дня після розрахунків на початку поки приймає значення першого дня
+        let num = numDays //свого роду лічільник який приймає значення додатніх чи відємних днів поки не дойде до 0
+        if (numDays>0) { //Умова при якій  потрібно додати певну кількімть днів
+          while(num>0) {
+            //sumDayManthOfYear =  this.isLeapYear  
+          if (sumDayManthOfYear[12]>startNumDays+num) { // умова коли сума результа суми першого дня від початку року і днів на які потрібно збільшити не виходить за межі поточного року
+          lastDay=startNumDays+num
+          this.Month = sumDayManthOfYear.findIndex((el,i,arr) => { //визначення поточного дня та місяця
+            if (i>0) {
+              if (arr[i-1]<lastDay&&lastDay <= arr[i]) {
+                num=0
+                this.Day = lastDay - arr[i-1]
+                return i
+              }
+            }
+          })
+        } 
+          else { // умова розрахунку днів коли сумма доданих днів буде більша за 365 або 366 днів 
+              lastDay = sumDayManthOfYear[12]
+              num = num - (lastDay - startNumDays)
+              this.Year++
+              sumDayManthOfYear =  this.isLeapYear
+              startNumDays = 0
+          }
+        } 
+        }
+        if (numDays<0) { //Умова коли потрібно відняти задану кількість днів
+          while(num<0){
+            if (startNumDays+num>=0) {
+             // sumDayManthOfYear =  this.isLeapYear  
+              lastDay=startNumDays+num
+              this.Month = sumDayManthOfYear.findIndex((el,i,arr) => {
+                if (i>0) {
+                  if (arr[i-1]<lastDay&&lastDay <= arr[i]) {
+                    num=0
+                    this.Day = lastDay - arr[i-1]
+                    return i
+                  }
+                }
+              })
+            } 
+            else {
+              this.Year--
+              sumDayManthOfYear =  this.isLeapYear
+              lastDay = sumDayManthOfYear[0]
+              num = num + startNumDays + lastDay           
+               startNumDays = 365
+            }
+          }
+        }
+      }
+      sumManth(numManth) { //Метод знаходження додатніх та відємних місяців
+        if (numManth>0){
+          this.Year += Math.floor((this.Month+numManth)/12)
+          this.Month = (this.Month+numManth)%12
+        } else {
+          this.Year += Math.floor((this.Month+numManth)/12)
+          if(this.Month>numManth*-1) { this.Month += numManth}
+          else if(numManth*-1<=12) {
+             this.Month = this.Month + 12 + numManth}
+          else {
+            let month = this.Month + Math.floor(numManth*-1/12)*12 + numManth
+            this.Month = month===0?12:month
+        }
+      }
+    }
+      sumYear(numYear) {//Метод знаходження додатніх та відємних років
+        this.Year+=numYear
+      }
+      resultData(){ 
+      let data = prompt(`КАЛЬКУЛТОР ДАТ!!! \n Введіть кількість  днів, місяців, років ЧЕРЕЗ( , ) за прикладом \n
+      \n дні, місяці, роки\n Приклад:\n -400,25,-3 \n 300,0,9 \n 0,-50,0  `)
+      let arrayData = data.split(",").map(el => parseInt(el))      
+      console.log(arrayData); 
+      //при обчислюванні зіткнувся з цікавою ситуацією, що коли ввести всі значення то потрібно обчислювати спочатку роки потім місяці і в останню чергу дні, якщо нижче задані метеоди розставити в протилежному порядку то результат днів не сходиться. Перевіряв свій код оось тут: https://www.kalkulaator.ee/ru/kalkulyator-vremeni-slozhenie-i-vychitanie-dat     
+      this.sumYear(arrayData[2])     
+      this.sumManth(arrayData[1])
+      this.sumDay(arrayData[0])     
+    }      
+    }   
+    let a = new TDate(12,11,2012)
+    document.write(a)    
+    a.resultData()
+    document.write(a)
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача3</title>
+</head>
+
+<body>
+  <h3>Задача3</h3>
+  <p>Об’єкт “Фірма” (використати члени-класи)	
+    <table border="1px">
+      <tbody>
+        <tr>
+          <td>поля</td>
+          <td>▪	назва фірми;<br>
+            ▪	дата заснування (рік, місяць);<br>
+            ▪	послуги (назва послуги, вартість, термін виконання);<br>
+            ▪	адреси філіалів (країна, місто, вулиця, номер будинку);
+            </td>
+        </tr>
+        <tr>
+          <td>методи</td>
+          <td> 
+            ▪	визначення кількості років існування фірми;<br>
+            ▪	виведення всіх філіалів фірми у вказаному місті;<br>
+            ▪	виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+
+          </td>
+        </tr>
+      </tbody>
+    </table>    
+  </p>
+
+  <script>
+   
+   const services = [
+  { name: "Рlaster", cost: 100, term: 5 },
+  { name: "Dismantle", cost: 200, term: 10 },
+  { name: "Steal", cost: 300, term: 15 },
+  ];
+    const branchAddresses = [
+  { country: "Ukraine", city: "Kyiv", street: "Shevchenko St.", buildingNumber: "10" },
+  { country: "Ukraine", city: "Lviv", street: "Franko St.", buildingNumber: "5" },
+  { country: "Ukraine", city: "Kharkiv", street: "Sumskaya St.", buildingNumber: "2" },
+  { country: "Ukraine", city: "Kropivnitskiy", street: "lobanovskogo St.", buildingNumber: "15" },
+  { country: "Ukraine", city: "Kropivnitskiy", street: "Celenskogo St.", buildingNumber: "6a" },
+  ];
+  const nameFirm = 'WrtConter'
+  
+  class Company {
+    constructor(title, year,month,service,addresses){
+      this.Title = title
+      this.yearFounded = year
+      this.monthFounded = month
+      this.services = services;
+      this.branchAddresses = addresses
+    }
+    ageOfTheCompany(){
+      const today = new Date();
+      return today.getFullYear() - this.yearFounded      
+    }
+    definitionOfBranches(cityName){
+    this.branchAddresses.filter(el => el.city===cityName? document.write(`Країна ${el.country}, місто ${el.city}, адреса: ${el.street} б.${el.buildingNumber} <br>`):'')
+    }
+    serviceForACertainTimeAndMoney(sumMoney,term) {
+      let newArray= []
+      let money=sumMoney
+      let termCouter = term
+      for (const el of this.services) {
+        if(money>=el.cost) {
+          if(termCouter>=el.term){
+            money-=el.cost
+            termCouter-=el.term
+            newArray.push(el)
+          }
+        }      
+      } 
+      if(newArray.length===0) throw new Error(`За даннами умовами неможливо виконати данні послуги`)
+      for (const el of newArray) {
+        document.write(`<p> Послуга ${el.name}, вартість термін ${el.cost},виконання ${el.term}</p> `)
+      }      
+    } 
+  }
+  const WrtConter = new Company(nameFirm,2012,10,services,branchAddresses)
+  WrtConter.definitionOfBranches("Kropivnitskiy")
+  document.write(WrtConter.ageOfTheCompany())
+  WrtConter.serviceForACertainTimeAndMoney(600,30)
+
+
+
+
+  </script>
+</body>
+
+</html>

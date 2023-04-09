@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача4</title>
+  </head>
+
+  <body>
+    <h3>Задача 4</h3>
+  <p>Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+  </p>
+  <script>
+   class TBankomat{
+    #_5grn
+    #_10grn
+    #_20grn
+    #_50grn
+    #_100grn
+    #_200grn
+    constructor(in5grn,in10grn,in20grn,in50grn,in100grn,in200grn){
+      this.Num5grn= in5grn
+      this.Num10grn=in10grn
+      this.Num20grn=in20grn
+      this.Num50grn=in50grn
+      this.Num100grn=in100grn
+      this.Num200grn=in200grn
+    }
+    get Num5grn (){return this.#_5grn}
+    get Num10grn (){return this.#_10grn}
+    get Num20grn (){return this.#_20grn}
+    get Num50grn (){return this.#_50grn}
+    get Num100grn (){return this.#_100grn}
+    get Num200grn (){return this.#_200grn}
+
+    set Num5grn (new5grn){ 
+      if(new5grn<0) throw new Error (`Неможливо зняти бцльше купюр чим є в банкоматі`)
+      return this.#_5grn = new5grn
+    }
+    set Num10grn (new10grn){
+      if(new10grn<0) throw new Error (`Неможливо зняти бцльше купюр чим є в банкоматі`)
+      return this.#_10grn = new10grn
+    }
+    set Num20grn (new20grn){if(new20grn<0) throw new Error (`Неможливо зняти бцльше купюр чим є в банкоматі`)
+      return this.#_20grn = new20grn}
+    set Num50grn (new50grn){if(new50grn<0) throw new Error (`Неможливо зняти бцльше купюр чим є в банкоматі`)
+      return this.#_50grn = new50grn}
+    set Num100grn (new100grn){if(new100grn<0) throw new Error (`Неможливо зняти бцльше купюр чим є в банкоматі`)
+      return this.#_100grn = new100grn}
+    set Num200grn (new200grn){if(new200grn<0) throw new Error (`Неможливо зняти бцльше купюр чим є в банкоматі`)
+      return this.#_200grn = new200grn}
+
+    maxSummMoney(){
+        let maxSumm = 5 * this.Num5grn + 10 * this.Num10grn + 20 * this.Num20grn + 50 * this.Num50grn + 100 * this.Num100grn + 200 * this.Num200grn
+        return maxSumm
+      }
+    minSummMoney(){
+      if(this.Num5grn>0) return 5
+      if(this.Num10grn>0) return 10
+      if(this.Num20grn>0) return 20
+      if(this.Num50grn>0) return 50
+      if(this.Num100grn>0) return 100
+      if(this.Num200grn>0) return 200
+    }
+    withdrawalOfFunds (money){
+      if(money<this.minSummMoney()|| money>this.maxSummMoney()) throw new Error(`В банкоматі немає стільки коштів`)
+      let cuonterOfMoney =money
+
+      while(cuonterOfMoney>0){
+        if(cuonterOfMoney>=200){
+          let counterMoney200 = Math.floor(cuonterOfMoney/200)
+          if(this.Num200grn>=counterMoney200){
+          this.Num200grn -= counterMoney200
+          cuonterOfMoney -= counterMoney200*200
+          }else {
+            counterMoney200 = this.Num200grn
+            this.Num200grn -= counterMoney200
+            cuonterOfMoney -= counterMoney200*200
+          }
+        }
+        if(cuonterOfMoney>=100){                  
+         let counterMoney100 = Math.floor(cuonterOfMoney/100)
+         if(this.Num100grn>=counterMoney100){
+          this.Num100grn -= counterMoney100
+          cuonterOfMoney -= counterMoney100*100
+        }else{
+            counterMoney100 = this.Num100grn
+            this.Num100grn -= counterMoney100
+            cuonterOfMoney -= counterMoney100*100
+        }
+        }
+        if(cuonterOfMoney>=50){
+          let counterMoney50 = Math.floor(cuonterOfMoney/50)
+          if(this.Num50grn>=counterMoney50){
+            this.Num50grn -= counterMoney50
+            cuonterOfMoney -= counterMoney50*50  
+          }else {
+            counterMoney50 = this.Num50grn
+            this.Num50grn -= counterMoney50
+            cuonterOfMoney -= counterMoney50*50
+        }    
+        }
+        if(cuonterOfMoney>=20){
+          let counterMoney20 = Math.floor(cuonterOfMoney/20)
+          if(this.Num20grn>=counterMoney20){
+          this.Num20grn -= counterMoney20
+          cuonterOfMoney -= counterMoney20*20  
+          }else {
+            counterMoney20 = this.Num20grn
+            this.Num20grn -= counterMoney20
+            cuonterOfMoney -= counterMoney20*20         
+        }
+      }
+        if(cuonterOfMoney>=10){
+          let counterMoney10 = Math.floor(cuonterOfMoney/10)
+          if(this.Num10grn>=counterMoney10){
+          this.Num10grn -= counterMoney10
+          cuonterOfMoney -= counterMoney10*10
+        }else {
+            counterMoney10 = this.Num10grn
+            this.Num10grn -= counterMoney10
+            cuonterOfMoney -= counterMoney10*10         
+        }
+        }
+        if(cuonterOfMoney>=5){         
+          let counterMoney5 = Math.floor(cuonterOfMoney/5)
+          if(this.Num5grn>=counterMoney5){
+          this.Num5grn -= counterMoney5
+          cuonterOfMoney -= counterMoney5*5
+        }else {
+            counterMoney5 = this.Num5grn
+            this.Num5grn -= counterMoney5
+            cuonterOfMoney -= counterMoney5*5         
+        }
+        }
+      }
+      
+    }
+   }
+
+   let bank = new TBankomat(30,25,20,15,10,5)
+   document.write(`максимальна сумма яку можна зняти ${bank.maxSummMoney()}<br> 
+   мінімальна сумма яку можна зняти -${bank.minSummMoney()}<br>`)
+   document.write(`Знімаємо 5 грн<br>`)
+   bank.withdrawalOfFunds(5)
+   document.write(`максимальна сумма яку можна зняти ${bank.maxSummMoney()}<br> 
+   мінімальна сумма яку можна зняти -${bank.minSummMoney()}<br>`)
+   document.write(`Знімаємо 2950 грн<br>`)
+   bank.withdrawalOfFunds(2950)
+   document.write(`максимальна сумма яку можна зняти ${bank.maxSummMoney()}<br> 
+   мінімальна сумма яку можна зняти -${bank.minSummMoney()}<br>`)
+   document.write(`Знімаємо 1000 грн<br>`)
+   bank.withdrawalOfFunds(1000)
+   document.write(`максимальна сумма яку можна зняти ${bank.maxSummMoney()}<br> 
+   мінімальна сумма яку можна зняти -${bank.minSummMoney()}<br>`)
+  </script>
+  
+  </body>
+</html>

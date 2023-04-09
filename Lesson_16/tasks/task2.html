@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача1</title>
+</head>
+
+<body>
+  <h3>Задача2</h3>
+  <p>.Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі. </p>
+  <script>
+    class TMoney{
+      #sumMoney
+      #dolarExchengeRate 
+      constructor(initMoney, initDollar = 36.75){
+        this.MoneySum = initMoney
+        this.Dollar = initDollar
+      }
+      
+      get MoneySum(){
+        return this.#sumMoney
+      }
+      get Dollar(){
+        return this.#dolarExchengeRate
+      }
+      set MoneySum(newMonew){
+        if (newMonew<0) throw new Error (`Помилка. відємний баланс`)
+        return this.#sumMoney=newMonew
+      }
+      set Dollar(newExchengeRate) {
+        if(newExchengeRate<=0) throw new  Error(`Помилка курс долара не може  дорвнювати або бути меньшим за ноль `)
+        return this.#dolarExchengeRate=newExchengeRate
+      }
+      convertGrivnaOfDollar (grivna){         
+        return Math.round(grivna/this.Dollar, -2)
+      }
+      convertDollarToGrivna(dollar){
+        return dollar*this.Dollar
+      }
+      addAndNounGrivna(numGrivna){        
+         this.MoneySum += this.convertGrivnaOfDollar(numGrivna)
+      }
+      addGrivnaTo100(){
+        this.Dollar = Math.round(((this.convertDollarToGrivna(this.MoneySum)+100)/this.MoneySum),-2)
+      }
+      toString(){
+        return  `Кількість доларів ${this.MoneySum}, курс ${this.Dollar}грн/дол<br>`
+      }
+    }
+
+    let bank = new TMoney(500)
+    document.write(bank)
+    document.write(`Додаєм 1000 грн <br>`)
+    bank.addAndNounGrivna(1000)
+    document.write(bank)
+    document.write(`Забераємо 700 грн <br>`)
+    bank.addAndNounGrivna(-700)
+    document.write(bank)
+    document.write(`Визначення курсу доллара, при якому сума у гривнях збільшиться на 100 <br> `)
+    bank.addGrivnaTo100()
+    document.write(`Курс доллара ${bank.Dollar} грн/дол`)
+  </script>
+</body>
+
+</html>
