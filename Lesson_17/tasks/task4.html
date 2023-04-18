@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача4</title>
+</head>
+
+<body>
+  <h3>Задача 4</h3>
+  <p> Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва,
+    реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за
+    назвою фірми
+  </p>
+  
+  <script>
+    class Goods {
+      constructor(nameProduct, unitOfMeasurement, quantity, manufacturerTitle,num) {
+        this.nameProduct = nameProduct
+        this.unitOfMeasurement = unitOfMeasurement
+        this.quantity = quantity
+        this.manufacturerTitle = new Manufacturer(manufacturerTitle,num)
+      }
+      toString() {
+        return `<br>Назва товару: ${this.nameProduct}<br> Одиниця виміру: ${this.unitOfMeasurement}<br> Кількість: ${this.quantity}<br> Фірма виробник:${this.manufacturerTitle}<br>`
+      }
+    }
+
+    class Manufacturer {
+         
+      constructor(name,num) {
+        this.name = name,
+        this.registrationNumber = num              
+      }     
+      toString() {
+        return `<br> Назва: ${this.name}, Реєстраційний номер в картотеці: ${this.registrationNumber} <br>`
+      }
+    };
+
+    class TreasureOfGods {
+      constructor() {
+        this.products = []
+      }
+      addProduct(someGoods) {
+        this.products.push(someGoods)
+      }
+      filterNameOfGoods (nameGoods) {
+        return this.products.filter(el => el.nameProduct===nameGoods?el.nameProduct:false)
+      }
+      filterNameOfManufacturer (nameManufacturer){
+        return this.products.filter(el => el.manufacturerTitle.name===nameManufacturer?el.manufacturerTitle.name:false)
+      }
+      deleteProduct (nameGoods) {
+        let index = this.products.findIndex((el, index, arr) => el.nameProduct===nameGoods)
+        console.log(index);
+        this.products.splice(index,1)
+      }
+      toString(){
+        document.write
+      }
+
+    }
+    const shooz = new Goods('Красовки', 'пара', '4', 'Nike',124)
+    let treasureOfGods = new TreasureOfGods()
+    document.write(shooz)
+    treasureOfGods.addProduct(shooz)
+    console.log(treasureOfGods);
+    const game = new Goods('Sony PlayStiton', 'шт.', '10', 'SONY',125)
+    const book = new Goods('Книга', 'шт.', '10', 'АБВ',745)
+    document.write(game)
+    document.write(book)
+    treasureOfGods.addProduct(game)
+    treasureOfGods.addProduct(book)
+    console.log(treasureOfGods.filterNameOfGoods('Красовки'));
+    console.log(treasureOfGods.filterNameOfManufacturer('SONY'));
+    console.log(treasureOfGods. deleteProduct('Sony PlayStiton'));
+    console.log(treasureOfGods);
+  </script>
+
+</body>
+
+</html>

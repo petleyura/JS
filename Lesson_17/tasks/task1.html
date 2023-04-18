@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача 1</title>
+</head>
+
+<body>
+  <h3>Задача 1.</h3>
+  <p>1. Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості
+    від’ємних, кількість входжень деякого числа (статичні методи)</p>
+
+  <script>
+    class ArraySomManipulation {     
+      static  numberAdded(arr){
+        let counter = 0
+       arr.forEach(el => {if(el>0) counter++}        
+       );
+       return counter
+      }
+      static  numberOfNegatives(arr){
+          let counter = 0
+        arr.forEach(el => { if (el < 0) counter++ }
+        );
+        return counter
+      }
+      static  numValue (arr, num) {
+         let counter = 0
+        arr.forEach(el => { if (el == num) counter++ }
+        );
+        return counter
+      }
+    }
+
+    const newArray = [2,5,3,-7,2,-8,-74,12,-96,-32,-54,-74,5,2]
+    document.write(`масив ${newArray}<br>`)
+    document.write(`знаходження кількості додатних ${ArraySomManipulation.numberAdded(newArray)}<br>`)    
+    document.write(`кількості від’ємних ${ArraySomManipulation.numberOfNegatives(newArray) }<br>`)    
+    document.write(`кількість входжень деякого числа (2) ${ArraySomManipulation.numValue(newArray,2)}<br>`)    
+ 
+  </script>
+</body>
+
+</html>

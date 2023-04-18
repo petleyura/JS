@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=`, initial-scale=1.0" />
+    <title>Задача4</title>
+  </head>
+
+  <body>
+    <h3>Задача 5</h3>
+    <p>	Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час. Організувати додавання/вилучення книг та  вибір книг за назвою, за ПІБ автора, за видавництвом.	   
+    </p>
+    <script>
+     class Avtor{
+      constructor(name,yearOfBirth,briefDescription){
+        this.nameAvtor = name
+        this.yearOfBirth = yearOfBirth
+        this.briefDescription = briefDescription
+      }
+      toString(){
+        return `<br>Ім\'я автора: \t${this.nameAvtor}, рік народження ${this.yearOfBirth}, короткий опис: ${this.briefDescription}`
+      }
+     }
+     class PublisherBook{
+      static num =1
+      constructor(titlePublisherBook, yearOfPublication){
+        this.title=titlePublisherBook
+        this.registrationNumber = PublisherBook.RegistrNumber
+        this.yearOfPublication=yearOfPublication        
+      }
+      static get RegistrNumber (){
+        const numPeg =  PublisherBook.num
+        PublisherBook.num++        
+        return numPeg.toString().padStart(5, "0")
+      }
+      toString(){
+        return `<br>Назва: ${this.title}, реєстраційний номер: ${this.registrationNumber}, рік заснування: ${this.yearOfPublication}) `
+      }
+     }
+    class Book {
+      constructor(name,yearOfBirth,briefDescription,bookTitle,genre,titlePublisherBook, yearOfPublication) {
+        this.avtor = new Avtor(name,yearOfBirth,briefDescription)
+        this.bookTitle = bookTitle
+        this.num = 1
+        this.genre = genre
+        this.publisherBook=new PublisherBook(titlePublisherBook, yearOfPublication)
+      }
+      toString(){
+        return `Автор: ${this.avtor},<br>Назва книги: ${this.bookTitle},<br> Жанр: ${this.genre},<br> Видавництво: ${this.publisherBook} <br>`
+      }
+    }
+    class Library {
+      constructor(){
+        this.books = []
+        this.bookgenre =[]
+      }
+      addBook(someBook){
+        this.books.push(someBook)
+        const genre = someBook.genre
+        // if(this.bookgenre.length==0) this.bookgenre.push(genre)
+       if(!this.bookgenre.some(el => el===genre )) this.bookgenre.push(genre) //при додаванні нової книги превіряє її жанр і привідсутності в біліотеці цього жанру  додає
+       console.log(this.bookgenre);
+      }
+      originOfTheBook(nemeBook){
+        this.books.filter(el => el.bookTitle===nemeBook?document.write(`${el.avtor},залишилось книг = ${el.num}`) :``)
+      }
+      searchBook(someBook){
+        return this.books.filter(el => el.bookTitle===someBook)
+      }
+      searchBookForAvtor(someAvtor){        
+        const booksForAvtor = this.books.filter(el => el.avtor.nameAvtor === someAvtor);
+        if (booksForAvtor.length === 0) {
+          document.write(`<br>Автор ${someAvtor} в бібліотеці відсутній`);
+        } else {
+          document.write(`<br>Автор: ${someAvtor}. Перелік книг в бібліотеці:<br>`);
+          booksForAvtor.forEach(book => {
+            document.write(`${book.bookTitle}<br>`);
+          });
+        }
+     }
+      searchBookForPublisher(somePublisher){
+       // return this.books.filter(el => {if (el.publisherBook.titlePublisherBook===somePublisher) return el.bookTitle})
+        const BookForPublisher = this.books.filter(el => el.publisherBook.title===somePublisher);
+        if (BookForPublisher.length === 0) {
+          document.write(`<br>Книги даного видавництва ${somePublisher} в бібліотеці відсутній`);
+        } else {
+          document.write(`<br>Книги даного видавництва: ${somePublisher}. Перелік книг в бібліотеці:<br>`);
+          BookForPublisher.forEach(book => {
+            document.write(`${book.bookTitle}<br>`);
+          });
+        }
+      }
+      deleteBook (someBook){
+        const index = this.books.findIndex(el=> el.bookTitle===someBook)
+        this.books.splice(index,1)
+      }
+    }
+
+   
+    
+    const book1 = new Book('Шерлок Холмс', 1859, 'британський детективний письменник', 'Пригоди Шерлока Холмса', 'Детектив', 'Penguin Random House', '1925')
+    const book2 = new Book('Джордж Орвелл', 1903, 'англійський журналіст і письменник', '1984', 'Антиутопія', 'Penguin Books', '1935')
+    const book3 = new Book('Ірвін Шоу', 1911, 'американський драматург і сценарист', 'Поцілунок Манхеттену', 'Комедія', 'Random House', '1927')
+    const book4 = new Book('Юлія Лоза', 1970, 'українська письменниця', 'Історія одного повернення', 'Сучасна проза', 'А-БА-БА-ГА-ЛА-МА-ГА', '1992')
+    const book5 = new Book('Джордж Р.Р. Мартін', 1948, 'американський письменник і продюсер', 'Гра престолів', 'Фентезі', 'Bantam Books', '1945')
+    const book6 = new Book('Михайло Коцюбинський', 1864, 'український письменник', 'Тіні забутих предків', 'Роман', 'Дніпро', '1918')
+    const book7 = new Book('Ернест Хемінгуей', 1899, 'американський письменник та журналіст', 'Старий і море', 'Роман', 'Scribner', '1846')
+    const book8 = new Book('Вільям Шекспір', 1564, 'англійський драматург, поет та актор', 'Гамлет', 'Трагедія', 'Penguin Classics', '1935')
+    document.write(book1)
+    document.write(book2)
+    document.write(book3)
+    document.write(book4)
+    document.write(book5)
+    document.write(book6)
+    document.write(book7)
+    document.write(book8)
+    let mayLibrary = new Library
+    mayLibrary.addBook(book1)
+    mayLibrary.addBook(book2)
+    mayLibrary.addBook(book3)
+    mayLibrary.addBook(book4)
+    mayLibrary.addBook(book5)
+    mayLibrary.addBook(book6)
+    mayLibrary.addBook(book7)
+    mayLibrary.addBook(book8)
+    mayLibrary.originOfTheBook(`Антиутопія`)
+    
+   mayLibrary.searchBookForAvtor(`Шерлок Холмс`)
+   mayLibrary.searchBookForPublisher(`Random House`)
+
+
+    </script>
+  </body>
+</html>
