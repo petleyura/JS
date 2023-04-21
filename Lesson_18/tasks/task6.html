@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача6</title>
+</head>
+
+<body>
+  <h3>Задача6</h3>
+  <p>Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди
+    користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.</p>
+  <br>
+  <label for=""> Price number
+    <input type="number" id="priceNumber">
+  </label>
+  <br>
+  <button onclick="inputsList()">get table</button>
+  <br>
+  <div id="form"></div>
+  <div id="result"></div>
+  <script>
+    function inputsList() {
+      let priceNumber = parseFloat(document.getElementById('priceNumber').value)
+      let formInput = document.getElementById("form")
+      let button = document.createElement('button')
+      button.setAttribute('id', 'get_sum')
+      button.setAttribute('onclick', 'sum()')
+      button.innerText = ('get sum')
+      for (let input = 0; input < priceNumber; input++) {
+        const inpunNew = document.createElement('input')
+        formInput.append(inpunNew)
+      }
+      formInput.after(button)
+
+    }
+
+    function sum() {
+      const div_form = document.getElementById('form')
+      const spans = div_form.querySelectorAll('input')
+      let sum =0
+      spans.forEach(el=> {
+        sum += parseFloat(el.value)
+      })
+      const priceNumber = parseFloat(document.getElementById('priceNumber').value)
+      const div_result = document.getElementById('result')
+      div_result.innerText = `Sum = ${sum / priceNumber}`
+    }
+
+   
+  </script>
+
+  </script>
+</body>
+
+</html>

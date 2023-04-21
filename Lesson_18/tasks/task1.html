@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача 1</title>
+</head>
+
+<body>
+  <h3>Задача 1.</h3>
+  <p>Задача 1. Розробити калькулятор</p>
+  <br>
+  <label >
+    Перше число
+    <input id="firstNum" type="number">
+  </label> <br>
+  <label >
+    Друге число
+    <input id="secondNum" type="number">
+  </label> <br>
+  <button id="add" onclick="sum()">Додати</button>
+  <button id="subtract" onclick="subtract()">Відняти</button>
+  <button id="multiply" onclick="multiply()">Помножити</button>
+  <button id="divide" onclick="divide()">Поділити</button>
+  <br>
+  <label for="">
+    Результат
+    <input id="result" type="text">
+  </label>
+  <script>
+   
+    function sum(){
+      let firstNum = parseFloat(document.getElementById('firstNum').value)
+    console.log(firstNum);
+    let secondNum = parseFloat(document.getElementById('secondNum').value)
+    console.log(secondNum);
+      let sum = firstNum + secondNum
+      console.log(sum);
+      document.getElementById('result').value = sum.toFixed(2)
+    }
+    function subtract() {
+      let firstNum = parseFloat(document.getElementById('firstNum').value)
+    console.log(firstNum);
+    let secondNum = parseFloat(document.getElementById('secondNum').value)
+    console.log(secondNum);
+      let subtract = firstNum - secondNum
+      console.log(subtract);
+      document.getElementById('result').value = subtract.toFixed(2)
+    }
+    function multiply() {
+      let firstNum = parseFloat(document.getElementById('firstNum').value)
+    console.log(firstNum);
+    let secondNum = parseFloat(document.getElementById('secondNum').value)
+    console.log(secondNum);
+      let multiply = firstNum * secondNum
+      console.log(multiply);
+      document.getElementById('result').value = multiply.toFixed(2)
+    }
+    function divide() {
+      let firstNum = parseFloat(document.getElementById('firstNum').value)
+    console.log(firstNum);
+    let secondNum = parseFloat(document.getElementById('secondNum').value)
+    console.log(secondNum);
+      let divide = firstNum / secondNum
+      console.log(divide);
+      document.getElementById('result').value = divide.toFixed(2)
+    }
+  
+  </script>
+</body>
+
+</html>

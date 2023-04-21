@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задача3</title>
+</head>
+
+<body>
+  <h3>Задача3</h3>
+  <p>Користувач задає рік народження. Визначити кількість років користувача.
+  </p>
+  <label for="" > Рік народження
+    <input type="number" id="yearUser">
+  </label> <br>
+  <button id="button" onclick=" year()">Кнопка</button><br>
+  <label for="" > Кількість років
+    <input type="number" id="years">
+  </label> 
+  <script>
+   function year(){
+    let yearUser = parseInt(document.getElementById('yearUser').value)
+    const year = 2023
+    document.getElementById('years').value = year - yearUser
+   }
+  </script>
+</body>
+
+</html>

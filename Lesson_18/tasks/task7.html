@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <title>Задача 7</title>
+</head>
+
+<body>
+  <h3>Задача 7</h3>
+  <p>Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус,
+    літак -
+    випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio
+    buttons).
+    Ціни визначте самі. Підрахувати загальну вартість.</p>
+  <br>
+  <div>
+    <leble>
+      Вид транспорту
+      <select name="" id="car">
+        <option value="750">Авто 750грн</option>
+        <option value="450">Автобус 450грн</option>
+        <option value="35500">Літак 35500грн</option>
+      </select>
+    </leble>
+    <div id="food">
+      Харчування <br>
+      <label>
+          <input type="checkbox" name="food" value="75">Сніданок 75грн
+      </label><br>
+      <label>
+          <input type="checkbox" name="food" value="150">Обід 150грн
+      </label><br>
+      <label>
+          <input type="checkbox" name="food" value="210">Вечеря 210грн
+      </label>
+    </div>
+    <div id="gid">
+      Гіди : <br>
+      <label>
+          <input type="radio" name="gid" value="0">Юрій (безкоштовно)
+      </label> <br>
+      <label>
+          <input type="radio" name="gid" value="50">Микола (практично безкоштов)
+      </label> <br>
+      <label>
+          <input type="radio" name="gid" value="1000000000">Порошенко (много)
+      </label>
+    </div>
+    <button id="button" onclick="sum()">Розрахувать</button>
+    <div>Загальний результат : <span id="result"></span>
+    </div>
+  </div>
+  <script>
+    function sum() {
+      const car = parseFloat(document.getElementById('car').value)
+      const food = document.getElementById('food')
+      console.log(food);
+      const inputFood = food.querySelectorAll('input')
+      console.log(inputFood);
+      let sum = car
+      console.log(sum);
+      inputFood.forEach(element => {
+        if (element.checked) sum += parseFloat(element.value)
+        console.log(element.value);
+        console.log(sum);
+      });
+      const gid = document.getElementById('gid')
+      const inputGid = gid.querySelectorAll('input')
+      inputGid.forEach(element => {
+        if (element.checked) sum += parseFloat(element.value)
+        console.log(element.value);
+        console.log(sum);
+      });
+      console.log(sum);
+      const span = document.getElementById('result')
+      span.innerText = sum
+      console.log(sum);
+    }
+  </script>
+
+  </script>
+</body>
+
+</html>
