@@ -20,10 +20,10 @@
     Друге число
     <input id="secondNum" type="number">
   </label> <br>
-  <button id="add" onclick="sum()">Додати</button>
-  <button id="subtract" onclick="subtract()">Відняти</button>
-  <button id="multiply" onclick="multiply()">Помножити</button>
-  <button id="divide" onclick="divide()">Поділити</button>
+  <button id="add" onclick="result(`sum`)">Додати</button>
+  <button id="subtract" onclick="result(`subtract`)">Відняти</button>
+  <button id="multiply" onclick="result(`multiply`)">Помножити</button>
+  <button id="divide" onclick="result('divide')">Поділити</button>
   <br>
   <label for="">
     Результат
@@ -31,42 +31,21 @@
   </label>
   <script>
    
-    function sum(){
+    function result(parametr){
       let firstNum = parseFloat(document.getElementById('firstNum').value)
     console.log(firstNum);
     let secondNum = parseFloat(document.getElementById('secondNum').value)
     console.log(secondNum);
-      let sum = firstNum + secondNum
-      console.log(sum);
-      document.getElementById('result').value = sum.toFixed(2)
+    let resultParameter
+    if(parametr==`sum`)resultParameter = firstNum + secondNum
+    if(parametr==`subtract`)resultParameter = firstNum - secondNum
+    if(parametr==`multiply`)resultParameter = firstNum * secondNum
+    if(parametr=='divide')resultParameter = firstNum / secondNum
+       
+      console.log(result);
+      document.getElementById('result').value = resultParameter.toFixed(2)
     }
-    function subtract() {
-      let firstNum = parseFloat(document.getElementById('firstNum').value)
-    console.log(firstNum);
-    let secondNum = parseFloat(document.getElementById('secondNum').value)
-    console.log(secondNum);
-      let subtract = firstNum - secondNum
-      console.log(subtract);
-      document.getElementById('result').value = subtract.toFixed(2)
-    }
-    function multiply() {
-      let firstNum = parseFloat(document.getElementById('firstNum').value)
-    console.log(firstNum);
-    let secondNum = parseFloat(document.getElementById('secondNum').value)
-    console.log(secondNum);
-      let multiply = firstNum * secondNum
-      console.log(multiply);
-      document.getElementById('result').value = multiply.toFixed(2)
-    }
-    function divide() {
-      let firstNum = parseFloat(document.getElementById('firstNum').value)
-    console.log(firstNum);
-    let secondNum = parseFloat(document.getElementById('secondNum').value)
-    console.log(secondNum);
-      let divide = firstNum / secondNum
-      console.log(divide);
-      document.getElementById('result').value = divide.toFixed(2)
-    }
+  
   
   </script>
 </body>
