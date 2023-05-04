@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=`, initial-scale=1.0" />
+  <script src="./js/js_4.js"></script>
+  <title>Задача4</title>
+</head>
+
+<body style="height: 100%;">
+  <h3>Задача 4</h3>
+  <p>Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. Кожна зірка з певним кроком і інтервалом збільшується від мінімального до максимального розміру. Як тільки досягнути максимального розміру зірочка повинна з’являтися у іншій випадковій позиції.
+  </p>
+  <br>
+  <div id="div">
+  <!--   <span></span> -->
+  </div>
+ <style>
+ html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#div {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+span {
+  position: absolute;
+ /*  top: 200px;
+  left: 300px; */
+  display: inline-block;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  width: 50px;
+  height: 50px;
+  background-color: #fff;  
+  transform: translate(-50%, -50%); 
+  transition: all 0.3s ease 0s;
+}
+
+ </style>
+</body>
+
+</html>
